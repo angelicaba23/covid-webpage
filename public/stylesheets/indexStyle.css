@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  overflow: scroll;
+}
+a {
+  
+}
+
+.wrap{
+  flex-wrap:wrap
+}
+.container {
+  display: flex;
+  height: 100%;
+}
+.texto h2 {
+  margin: 2em;
+}
+.imagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img {
+  width: 70vh;
+}
+#currentInfo {
+  flex:1 1 20%;
+  overflow-y: scroll;
+  width: 65vh;
+  min-height:25vh;
+  height: 82vh;
+  margin-bottom: 10px;
+}
+#currentInfo a {
+  background-color: #eeeeee;
+  border-width: 5px;
+  border-style: hidden;
+  border-color: #1f4ca4;
+  border-radius: 20px;
+  padding: 5px;
+
+  margin: 10px;
+  display: block;
+  text-decoration: none;
+  color: black
+}
+#currentInfo a:hover {
+  background-color: gray;
+  transform: scale(1.01);
+}
+#map-template {
+  margin: 0px 10px;
+  min-width:450px;
+  flex-shrink: 3;
+  flex:1 1 78%;
+}
+.row {
+  padding: 50px 20px;
+}
+
+@media all and (orientation: portrait) {
+  @media (max-width: 768px) and (min-width: 500px) {
+    .img {
+      width: 60vh;
+    }
+  }
+  @media (max-width: 500px) {
+    .img {
+      width: 40vh;
+    }
+  }
+  @media screen and (max-width: 281px) {
+    .img {
+      width: 30vh;
+    }
+  }
+}
+@media all and (orientation: landscape) {
+
+}
+

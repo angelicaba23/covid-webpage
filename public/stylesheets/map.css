@@ -1,0 +1,19 @@
+#map-template {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 85vh;
+  background: gray;
+  display: list-item;
+}
+@media (max-width: 500px) {
+  #map-template {
+    width: 82%;
+  }
+}
+@media (max-height: 820px) {
+  #map-template {
+    height: 82vh;
+  }
+}

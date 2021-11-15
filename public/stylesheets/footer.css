@@ -1,0 +1,174 @@
+footer {
+  position: relative;
+  width: auto;
+  height: 220px;
+  padding: 20px 0px;
+  background: #ff5b63;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+footer .container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+footer .container .sec {
+  margin-right: 30px;
+  margin-left: 30px;
+  font-size: 13px;
+}
+footer .container .sec.aboutus {
+  width: 303px;
+  height: 193px;
+}
+footer .container h2 {
+  position: relative;
+  color: #000000;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+footer .container h2:before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: #ffffff;
+}
+footer p {
+  color: #000000;
+  margin: 0;
+}
+.sci {
+  margin-top: 20px;
+  display: flex;
+}
+.sci li {
+  list-style: none;
+  padding: 0 5px;
+}
+.sci li a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(204, 88, 88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.sci li a:hover {
+  background: #4056f4;
+}
+.sci li a .fa {
+  color: #fff;
+  font-size: 12px;
+}
+.contact {
+  width: 303px;
+  height: 193px;
+  margin-right: 3vh;
+  margin-left: 3vh;
+}
+.contact .info {
+  position: relative;
+}
+.contact .info li {
+  list-style: none;
+  display: flex;
+  margin-bottom: 4px;
+}
+.copyrightText {
+  width: auto;
+  background: #e74646;
+  padding: 5px 0px;
+  color: #000000;
+  text-align: center;
+}
+/*
+Para cuando el height es mayor al width
+*/
+@media all and (orientation: portrait) {
+  @media screen and (max-width: 1050px) {
+    footer .container .sec {
+      font-size: 12px;
+    }
+    .sci {
+      margin-top: 10px;
+    }
+  }
+  @media screen and (max-width: 730px) {
+    footer .container .sec {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+  }
+  @media screen and (max-width: 660px) {
+    footer .container {
+      flex-direction: column;
+    }
+    footer {
+      padding: 20px 0px;
+      height: auto;
+    }
+    footer .container .sec.aboutus {
+      padding: 3px 0;
+    }
+    .contact {
+      padding: 15px 0px;
+    }
+  }
+  @media screen and (max-width: 540px) {
+    .text-muted {
+      display: flex !important;
+    }
+  }
+}
+/*
+El width es mayor al height
+*/
+@media all and (orientation: landscape) {
+  @media screen and (max-width: 1050px) {
+    footer .container .sec {
+      font-size: 12px;
+    }
+    .sci {
+      margin-top: 10px;
+    }
+  }
+  @media screen and (max-width: 730px) {
+    footer .container .sec {
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+  }
+  @media screen and (max-width: 660px) {
+    footer .container {
+      flex-direction: column;
+    }
+    footer {
+      padding: 20px 0px;
+      height: auto;
+    }
+    footer .container .sec.aboutus {
+      padding: 3px 0;
+    }
+    .contact {
+      padding: 15px 0px;
+    }
+  }
+  @media screen and (max-width: 540px) {
+    .text-muted {
+      display: flex !important;
+    }
+  }
+}

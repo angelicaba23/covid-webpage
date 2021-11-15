@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <%- include layouts/head.ejs %>
+    <meta name="theme-color" content="#FF5B63">
+    <link rel="stylesheet" href="/stylesheets/indexStyle.css">
+    <link rel="icon" href="./images/taxi.ico">
+    <script defer src="/javascripts/main.js"></script>
+
+</head>
+
+<body>
+
+    <%- include layouts/navigation.ejs %>
+
+    <div class="row">
+        
+        
+        <div class="imagen">
+        <img alt="" class="img" importance="auto" loading="auto"
+            src="https://i.pinimg.com/originals/d7/ae/01/d7ae0170d3d5ffcbaa7f02fdda387a3b.gif" />
+        </div>
+            
+        
+        <div class="container wrap">
+            <div class="left" id="currentInfo">
+                <img alt="" class="img2" importance="auto" loading="auto" width=auto
+            src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/585d0331234507.564a1d239ac5e.gif" />
+            </div>
+
+            <div class="right" id="map-template">
+                <div class="button-overlay">
+                    <button title="sd" id='zoom' class="zoom-to-data-buttom" type="submit">
+                        <i class="fas fa-crosshairs"></i>
+                    </button>
+
+                </div>
+            </div>
+        </div>        
+
+    </div>
+
+
+    <%- include layouts/footer.ejs %>   
+
+</body>
+
+</html>

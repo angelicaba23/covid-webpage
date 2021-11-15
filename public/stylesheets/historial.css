@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.bottom-nav {
+  position: fixed; /* maybe sticky is better if part of overall page layout? */
+  bottom: 100vh; /* fallback? */
+  bottom: calc(100vh - env(safe-area-inset-bottom)); /* new thing */
+}
+.fecha {
+  
+  padding-bottom: 5px;
+  padding-top: 5px;
+  display: flex;
+  background-color: rgb(123, 192, 233);
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+.fecha h3 {
+  background-color: rgb(123, 192, 233);
+}
+.licence-plate-div {
+  margin: 0 5px;
+}
+.continer-time {
+  margin: 0 5px;
+}
+.fecha-div {
+  background-color: rgb(123, 192, 233);
+  justify-content: center;
+}
+.date:hover {
+  background-color: #f1666e;
+}
+.ruta {
+  border-radius: 20px;
+  padding: 0px 32px 0px 32px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  text-decoration: none;
+  background-color: #f1666e;
+  border: solid white;
+  color: white;
+  box-shadow: 0px 5px #999;
+  transition: background-color 0.75s;
+  transition: border 0.75;
+}
+.ruta:hover {
+  background-color: white;
+  border: solid #f1666e;
+  color: #f1666e;
+}
+.ruta:active {
+  box-shadow: 0px 3px #666;
+  transform: translateY(2px);
+}
+.button{
+  margin-left: 75px;
+  align-items: center;
+  padding-top: 6px;
+}
+#button-trace {
+  background-color: #f1666e;  
+  color: white;
+  border-radius: 20px;
+  border: solid white;
+  padding: 5px;
+  padding-left: 22px;
+  padding-right: 22px;
+  transition: background-color 0.75s;
+  transition: border 0.75;
+  box-shadow: 0px 5px #999;
+}
+#button-trace:hover {
+  background-color: white;
+  border: solid #f1666e;
+  color: #f1666e;
+}
+#button-trace:active {
+  transform: translateY(2px);
+  box-shadow: 0px 3px #666;
+}
+#button-trace:hover {
+  background-color: white;
+  border: solid #f1666e;
+  color: #f1666e;
+}
+#button-trace:active {
+  transform: translateY(2px);
+  box-shadow: 0px 3px #666;
+}
+#allDataDiv{
+  height: 70px;
+  overflow-y: scroll;
+  width: 90%;
+  padding: 0 5%;
+}
+#allDataDiv p {
+  background-color: #eeeeee;
+  border-width: 5px;
+  border-style: hidden;
+  border-color: #1f4ca4;
+  border-radius: 28px;
+  padding: 1%;
+}
+
+@media (max-width: 768px) {
+  .fecha {
+    display: block;
+    align-items: center;
+    justify-content: center;
+  }
+  .licence-plate-div {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
+  #licence-id{
+    margin: 0 5px;
+  }
+  #button-trace {
+    background-color: #f1666e;
+    margin-left: 0px;
+  }
+  .continer-time {
+    padding: 5px;
+  }
+  .button{
+    margin-left: 0px;
+    padding: 5px;
+  }
+}
