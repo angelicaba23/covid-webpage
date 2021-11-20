@@ -1,0 +1,20 @@
+<div class="container p-4">
+  <div class="row">
+    <% students.forEach(function(student) { %>
+    <li>Name:<%= student.name %> Course:<%= student.course %></li>
+    <% }); %>
+  </div>
+</div>
+
+<% orders.products.forEach((order,index) => {%>
+<tr>
+  <td><%= index+1 %></td>
+  <td><%= order.description %></td>
+  <td><%= order.price %></td>
+  <td><%=order.quantity %></td>
+  <td><%=orders.amount %></td>
+  <td><%=order.salesTax %></td>
+  <td><%=order.tax %></td>
+  <td><%=order.amount %></td>
+</tr>
+<% });%> <% }%>

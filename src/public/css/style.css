@@ -1,5 +1,5 @@
 /* Base */
-html {
+html {  
   overflow-x: hidden;
 }
 
@@ -101,6 +101,7 @@ body:after {
   background: #6f42c1;
   border-color: #6f42c1;
   color: #fff;
+  z-index: 1999;
 }
 .btn.btn-primary:hover {
   background: #6f42c1;
@@ -136,6 +137,9 @@ body:after {
 
 .bg-black {
   background: #000;
+}
+.super-position{
+  z-index: 500;
 }
 
 .form-control {
@@ -392,7 +396,7 @@ body:after {
 .site-navbar {
   margin-bottom: 0px;
   z-index: 1999;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
 }
