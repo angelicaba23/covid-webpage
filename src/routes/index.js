@@ -6,7 +6,6 @@ const {
     getPrevention, getSymptoms, getAbout, getLogin
 } = require('./routes');
 
-
 router.get('/', getIndex)
 router.get('/blog', getBlog)
 router.get('/contact', getContact)
