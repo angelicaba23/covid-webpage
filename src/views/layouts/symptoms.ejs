@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid &mdash; Website Template by Colorlib</title>
+
+    <%- include('../partials/head') %>
+  </head>
+
+  <body>
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <header
+      class="site-navbar light js-sticky-header site-navbar-target"
+      role="banner"
+    >
+      <%- include('../partials/header') %>
+    </header>
+
+    <div class="hero-v1">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mr-auto text-center text-lg-left">
+            <span class="d-block subheading">Covid Symptoms</span>
+            <h1 class="heading mb-3">Symptoms</h1>
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel a, nulla incidunt eaque sit praesentium porro consectetur optio!</p>
+            <p class="mb-4"><a href="#" class="btn btn-primary">How to prevent</a></p>
+
+
+
+          </div>
+          <div class="col-lg-6">
+            <figure class="illustration-2">
+              <img src="images/symptoms.png" alt="Image" class="img-fluid">
+            </figure>
+          </div>
+          <div class="col-lg-6"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer"><%- include('../partials/footer') %></footer>
+
+    <%- include('../partials/script') %>    
+  </body>
+</html>
