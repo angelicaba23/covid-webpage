@@ -11,7 +11,7 @@ require('./accesDB');
 
 // settings
 app.engine('ejs',engine);
-app.set('port', process.env.Port || 8080);
+app.set('port', process.env.WEBPORT || 80);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
