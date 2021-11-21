@@ -1,0 +1,72 @@
+<%- include('../layouts/header') %>
+    </head>
+
+    <body>
+        <%- include('../layouts/navBar') %>
+            <div class="hero-v1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <span class="subheading">Covid-19 Awareness</span>
+                            <h1 class="heading">Stay Safe. Stay Home.</h1>
+                            <p class=button-mb-5>
+                                <a href="#" class="btn-primary">
+                                    HOW TO PREVENT</a>
+                            </p>
+                        </div>
+                        <div class="col-lg-6">
+                            <figure class="ilustration">
+                                <img src="/images/illustration.png" alt="Image" class=img-fluid>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container p-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="/links/add" method="POST">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="name" placeholder="Name"
+                                            autofocus />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="lastName" placeholder="Last name"
+                                            autofocus />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="role"
+                                            placeholder="Role: 1-medico, 2-ayudante, 3-administrador" autofocus />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="cc" placeholder="Cedula"
+                                            autofocus />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="user" placeholder="User"
+                                            autofocus />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="password"
+                                            placeholder="Password" autofocus />
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-success btn-block">
+                                            Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </body>
+
+    </html>

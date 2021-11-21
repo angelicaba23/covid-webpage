@@ -1,30 +1,20 @@
 {
-  "name": "covid-webpage",
+  "name": "prueba-covid-web",
   "version": "1.0.0",
-  "description": "This is the solution for telematic's ask",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
-    "dev": "nodemon src/index.js"
+    "start": "nodemon src",
+    "dev": "nodemon src"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/angelicaba23/covid-webpage.git"
-  },
-  "keywords": [
-    "covid-webpage"
-  ],
-  "author": "Angelica Barrando and Dierick Brochero",
+  "author": "Dierick y Angelica",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/angelicaba23/covid-webpage/issues"
-  },
-  "homepage": "https://github.com/angelicaba23/covid-webpage#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.6",
+    "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
     "express-mysql-session": "^2.1.7",
     "express-session": "^1.17.2",

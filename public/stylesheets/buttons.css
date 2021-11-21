@@ -1,0 +1,19 @@
+.btn-primary{
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 30px;
+    padding: 10px 30px;
+    background: #6f42c1;
+    background-color: #6f42c1;
+    z-index: 2000;
+    margin: 7px 0;
+    width: auto;
+    color:aliceblue
+}
+.btn-primary:hover{
+    color: hsl(130, 100%, 50%);
+}
+.button-mb-5 a{
+    text-decoration: none;
+}
