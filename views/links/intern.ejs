@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/intern/intern.css' />
+    <link rel='stylesheet' href='/stylesheets/intern/interNav.css' />
+    <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <%- include('../layouts/interNav') %>
+
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">  <%= links[links.length-1].idcase %> </div>
+                        <div class="cardName">Total patients</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">#casos activos</div>
+                        <div class="cardName">Positives</div>
+                    </div>
+                    <div class="iconBox">
+                        <div class="user">
+                            <i class="fas fa-viruses" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">#casos negativos</div>
+                        <div class="cardName">Negatives</div>
+                    </div>
+                    <div class="iconBox">  
+                        <i class="fas fa-virus-slash"  aria-hidden="true"></i>   
+                    </div>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="recentPatients">
+                    <div class="cardHeader">
+                        <h2>Cases</h2>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>ID case</td>
+                                <td>Name and LastName</td>
+                                <td>Patient status</td>
+                                <td>Address home</td>
+                                <td>Covid State</td>
+                                <td>Last state date</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i<links.length; i++) {%>
+    
+                                <tr>
+                                    <td>
+                                        <%= links[i].idcase %>
+                                    </td>
+                                    <td>
+                                        <%= links[i].name %>
+                                            <%= links[i].lastname %>
+                                    </td>
+                                    <td>
+                                        <button id="idButton-<%=links[i].idcase%>" class="patientState"
+                                            style="background: red;">Hospital Treatment 
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <%= links[i].addresshome %>
+                                    </td>
+                                    <td>
+                                        <%= links[i].resultcovid %>
+                                    </td>
+                                    <td>sssss</td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="recentCases">
+                    <div class="cardHeader">
+                        <h2>Recent Users</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        function toggleMenu() {
+            let toggle = document.querySelector('.toggle');
+            let navigation = document.querySelector('.navigation')
+            let main = document.querySelector('.main')
+            let details = document.querySelector('.details')
+            let topbar = document.querySelector('.topbar')
+
+            toggle.classList.toggle('active')
+            navigation.classList.toggle('active')
+            main.classList.toggle('active')
+            details.classList.toggle('active')
+            topbar.classList.toggle('active')
+        }
+    </script>
+
+
+</body>
+
+</html>

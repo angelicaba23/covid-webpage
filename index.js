@@ -32,6 +32,7 @@ app.use('/links',require('./routes/links'));
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'lib')));
 app.use(express.static(path.join(__dirname, 'database')));
 
 //Starting the server 
