@@ -1,3 +1,57 @@
-{<% array.forEach(element => { %>
- 
-<% }) %>}
+<%- include('./layouts/header') %>
+  </head>
+
+  <body>
+    <%- include('./layouts/navBar') %>
+      <div class="hero-v1">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <span class="subheading">Covid-19 Statistics</span>
+              <h1 class="heading">Stay Safe. Stay Home.</h1>
+              <p class=button-mb-5>
+                <a href="/signin" class="btn-primary">
+                  SIGN IN</a>
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <figure class="ilustration">
+                <img src="/images/illustration.png" alt="Image" class=img-fluid>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <form action="/signin" method="POST">
+                <select class="form-select" name="role" aria-label="Default select example">
+                  <option selected>Select the Role</option>
+                  <option value="1">Medico</option>
+                  <option value="2">Ayudante</option>
+                </select>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="userName" placeholder="User" autofocus />
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="Password" autofocus />
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-success btn-block">
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </body>
+
+  </html>
