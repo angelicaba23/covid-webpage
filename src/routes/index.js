@@ -7,7 +7,7 @@ const {
 } = require('./routes');
 
 const {
-    getGraph
+    getGraph, getPie
 } = require('../controller/apiController');
 
 
@@ -17,6 +17,7 @@ router.get('/symptoms', getSymptoms)
 router.get('/signin', getLogin)
 router.post('/signin', postLogin)
 router.get('/getgraph', getGraph)
+router.get('/getpie', getPie)
 
 
 module.exports = router;
