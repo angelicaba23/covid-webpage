@@ -53,6 +53,31 @@ const getGraph = async (req, res, next) => {
     }
 };
 
+const getPie = async (req, res, next) => {
+    try {
+        const responseTotalCases = await pool.query(`WITH UNO AS (
+                                                    SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
+                                                    FROM covid.statepatient as s
+                                                    GROUP BY idcase
+                                                    )
+                                                    SELECT st.state, count(s.idcase) as total, st.color
+                                                    FROM covid.statepatient as s
+                                                    INNER JOIN UNO AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
+                                                    INNER JOIN covid.states AS st ON s.state = st.idstate
+                                                    GROUP BY s.state`);
+        const responsePosNeg = await pool.query(`SELECT cs.state, count(c.idcase) as total
+                                                 FROM covid.cases as c
+                                                 INNER JOIN covid.covidstate AS cs ON c.resultcovid = cs.idcovidstate
+                                                 GROUP BY resultcovid`);
+        res.json({
+            responsePosNeg: responsePosNeg,
+            responseTotal: responseTotalCases
+        });
+    } catch (e) {
+        console.error(e);
+    }
+};
+
 module.exports = {
-    getGraph
+    getGraph, getPie
 }
