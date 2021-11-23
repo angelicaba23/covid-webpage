@@ -11,6 +11,7 @@
     <link rel='stylesheet' href='/stylesheets/intern/patients.css' />
     <link rel='stylesheet' href='/stylesheets/intern/interNav.css' />
     <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
+    <script src="/javascripts/buttonId.js"></script>
 </head>
 
 <body>
@@ -46,7 +47,7 @@
                                     </td>
                                     <td>
                                         <button id="idButton-<%=links[i].idcase%>" class="patientState"
-                                            style="background: red;" onclick="fnPatient(this)" >
+                                            style="background: red;" onclick="fnPatient(this.id)" >
                                             Hospital Treatment 
                                         </button>
                                     </td>
@@ -90,9 +91,6 @@
             topbar.classList.toggle('active')
         }      
     </script>
-    <script src="/javascripts/buttonId.js"></script>
-
-
 </body>
 
 </html>
