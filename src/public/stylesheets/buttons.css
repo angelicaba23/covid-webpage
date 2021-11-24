@@ -8,8 +8,8 @@
     background-color: #6f42c1;
     z-index: 2000;
     margin: 7px 0;
-    width: auto;
-    color:aliceblue
+    width: 100%;
+    color:aliceblue;
 }
 .btn-primary:hover{
     color: hsl(130, 100%, 50%);

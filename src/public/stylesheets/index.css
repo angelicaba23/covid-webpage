@@ -25,12 +25,12 @@ myChart{
 }
 .card {
   position: relative;
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 20px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  width: 50%;
+  /* width: 50%; */
 }
 .numbers {
   position: relative;
