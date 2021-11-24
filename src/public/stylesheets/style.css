@@ -27,6 +27,7 @@ img.img-fluid {
   text-align: center;
   display: flex;
   max-height: 500px;
+  justify-content: center;
   /* align-items: center; */
 }
 .col {
@@ -36,8 +37,12 @@ img.img-fluid {
 .heading {
   padding-bottom: 10px;
 }
-
 @media (max-width: 768px) {
+  .logo {
+    font-size: 25px;
+    padding: 0 20px;
+    line-height: 50px;
+  }
   .col {
     min-width: 174px;
     max-width: 213px;

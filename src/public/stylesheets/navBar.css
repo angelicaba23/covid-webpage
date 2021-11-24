@@ -38,6 +38,7 @@
 }
 .nav-menu-link:hover {
   color: #6f42c1;
+  padding: 5px;
   transition: 0.3s;
 }
 .nav-toggle {

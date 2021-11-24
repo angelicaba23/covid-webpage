@@ -5,16 +5,16 @@ const bcryptjs = require("bcryptjs");
 const { getConnection } = require("../accesDB");
 
 const getIndex = (req, res, next) => {
-  res.render("index", { title: "Stay Safe Home" });
+  res.render("index", { title: "Covid-19 Stats" });
 };
 const getPrevention = (req, res, next) => {
-  res.render("prevention", { title: "Stay Safe Prevention" });
+  res.render("prevention", { title: "Covid-19 Stats Prevention" });
 };
 const getSymptoms = (req, res, next) => {
-  res.render("symptoms", { title: "Stay Safe Symptoms" });
+  res.render("symptoms", { title: "Covid-19 Stats Symptoms" });
 };
 const getLogin = (req, res, next) => {
-  res.render("login", { title: "Stay Safe Login" });
+  res.render("login", { title: "Covid-19 Stats Login" });
 };
 
 const postLogin = async (req, res) => {
