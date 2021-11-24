@@ -27,6 +27,7 @@ img.img-fluid {
   text-align: center;
   display: flex;
   max-height: 500px;
+  justify-content: center;
   /* align-items: center; */
 }
 .col {

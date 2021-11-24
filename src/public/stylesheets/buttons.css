@@ -1,4 +1,4 @@
-.btn-primary{
+.btn-primary, .btn{
     font-size: 13px;
     font-weight: bold;
     text-transform: uppercase;
@@ -16,4 +16,11 @@
 }
 .button-mb-5 a{
     text-decoration: none;
+}
+.form-control{
+    border-radius: 30px;
+    padding: 10px 10px;
+    z-index: 2000;
+    margin: 7px 0;
+    width: auto;
 }
