@@ -1,4 +1,4 @@
-function fnPatient(id) {
-  //TODO
+function fnPatient() {
+  buttonState = true
   console.log(id);
 }

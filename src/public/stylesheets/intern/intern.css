@@ -42,10 +42,10 @@ body {
   font-size: 2.5em;
   color: #03a9f4;
 }
-.fa-virus-slash{
+.fa-virus-slash {
   color: #4de14d;
 }
-.fa-viruses{
+.fa-viruses {
   color: red;
 }
 
@@ -57,7 +57,7 @@ body {
   padding-top: 0;
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
 }
 .details .recentPatients {
   position: relative;
@@ -141,6 +141,7 @@ body {
   font-weight: 400;
   letter-spacing: 1px;
   cursor: pointer;
+  text-decoration: none;
 }
 .details .recentCases {
   position: relative;
@@ -164,25 +165,24 @@ body {
   object-fit: cover;
 }
 @media (max-width: 992px) {
-  
   .cardBox {
-    grid-template-columns: repeat(1,1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 @media (max-width: 768px) {
-  .details{
-    grid-template-columns: repeat(1,1fr);
+  .details {
+    grid-template-columns: repeat(1, 1fr);
   }
-  .cardHeaderh2{
+  .cardHeaderh2 {
     font-size: 18px;
     font-weight: 600;
   }
 }
 @media (max-width: 480px) {
-  .details .recentPatients{
+  .details .recentPatients {
     overflow-x: auto;
   }
-  .details .recentPatients table{
+  .details .recentPatients table {
     width: 600px;
   }
 }

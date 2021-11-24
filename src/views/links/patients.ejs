@@ -9,19 +9,52 @@
         <%= title %>
     </title>
     <link rel='stylesheet' href='/stylesheets/intern/patients.css' />
+    <link rel='stylesheet' href='/stylesheets/intern/cards.css' />
     <link rel='stylesheet' href='/stylesheets/intern/interNav.css' />
     <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
     <script src="/javascripts/buttonId.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <%- include('../layouts/interNav') %>
-                      
+
+    <%- include('../layouts/interNav') %>
+        
+        
+    <% if(medico == false) { %>
+
+        <div class="container mainContainer">
+        
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">Register new patients</div>
+                        <div class="cardName">Positives</div>
+                    </div>
+                    <div class="iconBox">
+                        <div class="user">
+                            <i class="fas fa-viruses" aria-hidden="true"></i>
+                        </div>
+                    </div>  
+                </div>  
+
+                <p>
+                    dadadddddddddddddd
+                </p>                                
+            </div>
+
+    <% } else{ %>
+        <div class="container mainContainer"></div>
+    <% } %>
+            
+
+
             <div class="details">
+                
+                <%- include('../layouts/casesInfo') %>                
+
                 <div class="recentPatients">
                     <div class="cardHeader">
-                        <h2>Cases</h2>
+                        <h2>Cases</h2>                        
                     </div>
                     <table>
                         <thead>
@@ -36,7 +69,7 @@
                         </thead>
                         <tbody>
                             <% for(var i=0; i<links.length; i++) {%>
-    
+
                                 <tr>
                                     <td>
                                         <%= links[i].idcase %>
@@ -46,9 +79,9 @@
                                             <%= links[i].lastname %>
                                     </td>
                                     <td>
-                                        <button id="idButton-<%=links[i].idcase%>" class="patientState"
-                                            style="background: red;" onclick="fnPatient(this.id)" >
-                                            Hospital Treatment 
+                                        <button class="patientState" style="background: red;">
+                                            <a href="/links/intern/patients/<%=links[i].idcase%>" class="patientState"
+                                                style="background: red;">Hospital Treatment </a>
                                         </button>
                                     </td>
                                     <td>
@@ -64,15 +97,10 @@
                     </table>
                 </div>
 
-                <div class="recentCases">
-                    <div class="cardHeader">
-                        <h2>Cases information</h2>
-                    </div>
-                </div>
             </div>
 
+        
         </div>
-
     </div>
 
 
@@ -89,7 +117,7 @@
             main.classList.toggle('active')
             details.classList.toggle('active')
             topbar.classList.toggle('active')
-        }      
+        }
     </script>
 </body>
 

@@ -52,11 +52,21 @@
             </div>
 
             <div class="details">
+
+                <div class="recentCases">
+                    <div class="cardHeader">
+                        <h2>Statics</h2>
+                    </div>
+                    <!--  <%- include('../charts') %>   -->
+                    
+                </div>
+
                 <div class="recentPatients">
                     <div class="cardHeader">
-                        <h2>Cases</h2>
+                        <h2>Recent Pacientes</h2>
                         <a href="/links/intern/patients" class="btn">View All</a>
                     </div>
+                    
                     <table>
                         <thead>
                             <tr>
@@ -80,8 +90,9 @@
                                             <%= links[i].lastname %>
                                     </td>
                                     <td>
-                                        <button id="idButton-<%=links[i].idcase%>" class="patientState"
-                                            style="background: red;">Hospital Treatment 
+                                        <button class="patientState" style="background: red;">
+                                            <a href="/links/intern/patients/<%=links[i].idcase%>" class="patientState"
+                                                style="background: red;">Hospital Treatment </a>
                                         </button>
                                     </td>
                                     <td>
@@ -97,15 +108,11 @@
                     </table>
                 </div>
 
-                <div class="recentCases">
-                    <div class="cardHeader">
-                        <h2>Recent Users</h2>
-                    </div>
-                </div>
+                
+
             </div>
 
         </div>
-
     </div>
 
 

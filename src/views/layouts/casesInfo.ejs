@@ -1,0 +1,136 @@
+<div class="recentCases">
+    <div class="cardHeader">
+        <h2>Cases information</h2> 
+
+        <% if( (idButton >0) && (medico==false) ){ %>
+            <a href="/links/intern/patients/<%=links[idButton-1].idcase%>/edit"> 
+                <i class="fas fa-edit"></i>
+            </a>                            
+        <% } %>   
+    </div>
+
+    <% if(idButton >0){ %>
+
+        <% if(!edit){ %>
+            <div class="card">
+                <div class="card_header red">
+                    <div class="tittle">
+                        <div class="circle"><%=idButton%></div>
+                        <p>Id case:
+                            <%=links[idButton-1].name%>
+                            <%=links[idButton-1].lastname%>
+                        </p>
+                    </div>
+                </div>
+                <div class="card_section">
+                    <p>Result covid:
+                       <%=links[idButton-1].resultcovid%>
+                    </p>
+                </div>
+                <div class="card_section">
+                    <p>State patient:
+                       Estado del paciente
+                    </p>
+                </div>
+                <div class="card_section">
+                    <p>Birthdate:
+                        <%=links[idButton-1].birthdate%>
+                    </p>
+                </div>
+                <div class="card_section">
+                    <p>Home's Address: 
+                        <%=links[idButton-1].addresshome%>
+                    </p>
+                </div>
+                <div class="card_section">
+                    <p>Work's address: 
+                        <%=links[idButton-1].addresswork%>
+                    </p>
+                </div>
+                <div class="card_section">
+                    <p>SEX:
+                        <%=links[idButton-1].gender%>
+                    </p>
+                </div>
+                <div class="card_footer">
+                    <p>Last termino medico que desconozco:
+                        <%=links[idButton-1].dateexam%>
+                    </p>
+                </div>
+            </div>
+        <% } else {%>
+            <div class="card">
+                <form action="/links/intern/patients/<%=links[idButton-1].idcase%>/edit" method="POST">   
+                    <div class="card_header red">
+                        <div class="tittle">
+                            <div class="circle"><%=idButton%></div>
+                            <p>Id case:
+                                <%=links[idButton-1].name%>
+                                <%=links[idButton-1].lastname%>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group roleDropDown card_section">
+                        <input
+                          type="number"
+                          class="form-control rolDropDown"
+                          name="resultCovid"
+                          placeholder="Result: 1-Positive, 2-Negative"
+                          autofocus
+                          required
+                        />
+                    </div>
+
+                    <div class="form-group roleDropDown card_section">
+                        <input
+                          type="number"
+                          class="form-control rolDropDown"
+                          name="role"
+                          placeholder="Role: 1-medico, 2-ayudante, 3-administrador"
+                          autofocus
+                          required
+                        />
+                    </div>
+
+                    
+                    <div class="card_section">
+                        <p>Birthdate:
+                            <%=links[idButton-1].birthdate%>
+                        </p>
+                    </div>
+                    <div class="card_section">
+                        <p>Home's Address: 
+                            <%=links[idButton-1].addresshome%>
+                        </p>
+                    </div>
+                    <div class="card_section">
+                        <p>Work's address: 
+                            <%=links[idButton-1].addresswork%>
+                        </p>
+                    </div>
+                    <div class="card_section">
+                        <p>SEX:
+                            <%=links[idButton-1].gender%>
+                        </p>
+                    </div>
+                    <div class="card_footer">
+                        <p>Last termino medico que desconozco:
+                            <%=links[idButton-1].dateexam%>
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success btn-block">
+                            Save
+                        </button>
+                    </div>
+                </form>
+                
+            </div>
+
+        <% }%>
+
+
+    <% } %>  
+    
+</div>

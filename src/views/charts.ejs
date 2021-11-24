@@ -1,15 +1,46 @@
-<div class="allCharts" id="allCharts">
-    <h1>Total cases</h1>
-    <canvas id="myChart" ></canvas>
-    </br>
-    <div class="pieCharts" id="pieCharts">
-        <h1>Total cases</h1>
-        <canvas id="myPie1" ></canvas>
-        <h1>Total cases</h1>
-        <canvas id="myPie2"></canvas>
-        <h1>Test result</h1>
-        <canvas id="myPie3"></canvas>
+<div class="allCharts">
+    <div class="card">
+        <div>
+            <div class="numbers">Total Cases</div>
+            <br>
+            <div class="container mychart-cont">
+                <canvas id="myChart" width="700vw" 
+                ></canvas>
+            </div>
+        </div>
     </div>
 </div>
+
+
+<div class="cardBox">
+
+    <div class="card">
+        <div>
+            <div class="numbers">Total Cases</div>
+            <div class="myPie1">
+                <canvas id="myPie1"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div>
+            <div class="numbers">Total cases</div>
+            <div class="myPie2">
+                <canvas id="myPie2"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">Test Result</div>
+            <div class="myPie3">
+                <canvas id="myPie3"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="../javascripts/main.js"></script>

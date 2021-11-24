@@ -1,0 +1,46 @@
+.allCharts {
+  position: relative;
+  margin: 50px;
+  width: auto;
+  padding: 20px;
+  padding-top: 80px;
+  display: grid;
+  grid-gap: 20px;
+}
+myChart{
+    width: 500px;
+}
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  padding-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+#myPie1 {
+  width: 300px;
+}
+.card {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 50%;
+}
+.numbers {
+  position: relative;
+  font-size: 2em;
+  font-weight: 500;
+}
+.cardBox .card .cardName {
+  color: #999;
+}
+.cardBox .card .iconBox {
+  font-size: 2.5em;
+  color: #03a9f4;
+}

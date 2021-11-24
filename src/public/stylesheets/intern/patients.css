@@ -7,27 +7,83 @@
 }
 body {
   overflow-x: hidden;
+  /* padding-top: 10px; */
+}
+.fa-edit{
+  color:#03a9f4;
 }
 .container {
   position: relative;
   width: 100%;
 }
-
-.details {
-  overflow-y: auto;
+.mainContainer{
+  padding-top: 80px;
+}
+.rolDropDown{
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 9px;
+  background-color: azure;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.cardBox {
   position: relative;
   width: 100%;
   padding: 20px;
-  padding-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  grid-gap: 20px;
+  
+}
+.cardBox .card {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.cardBox .card .numbers {
+  position: relative;
+  font-size: 2em;
+  font-weight: 500;
+}
+.cardBox .card .cardName {
+  color: #999;
+}
+.cardBox .card .iconBox {
+  font-size: 2.5em;
+  color: #03a9f4;
+}
+.fa-virus-slash {
+  color: #4de14d;
+}
+.fa-viruses {
+  color: red;
+}
+
+/* Table */
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  padding-top: 0px;
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
 }
 .details .recentPatients {
   position: relative;
-  min-height: 530px;
+  min-height: 500px;
   background: #fff;
   padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgb(0 0 0 / 25%);
 }
 .cardHeader {
   display: flex;
@@ -45,6 +101,9 @@ body {
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
+  margin-left: 25%;
+  width: 50%;
+  margin-bottom: 10px;
 }
 .details table {
   width: 100%;
@@ -105,12 +164,15 @@ body {
   font-weight: 400;
   letter-spacing: 1px;
   cursor: pointer;
+  text-decoration: none;
 }
 .details .recentCases {
   position: relative;
   min-height: 530px;
   background: #fff;
   padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgb(0 0 0 / 25%);
 }
 .details .recentCases .imgBx {
   position: relative;
@@ -126,4 +188,26 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+@media (max-width: 992px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeaderh2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+@media (max-width: 480px) {
+  .details .recentPatients {
+    overflow-x: auto;
+  }
+  .details .recentPatients table {
+    width: 600px;
+  }
 }

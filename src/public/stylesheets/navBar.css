@@ -5,12 +5,14 @@
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 5000;
 }
 .nav {
   display: flex;
   justify-content: space-between;
   max-width: 992px;
   margin: 0 auto;
+  z-index: 5000;
 }
 .nav-link {
   color: black;
