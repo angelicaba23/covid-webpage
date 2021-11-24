@@ -45,12 +45,31 @@ img.img-fluid {
   width: 30%;
   
 }
+#pieCharts {
+  grid-template-columns: repeat(3, 1fr);
+}
 #allCharts h1{
   width: 200px;
   margin-left: auto;
   margin-right: auto;
 }
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0 20px;
+  line-height: 50px;
+  text-decoration: none;
+}
+.img-logo {
+  width: 40px;
+  vertical-align: middle;
+}
 @media (max-width: 768px) {
+  .logo {
+    font-size: 25px;
+    padding: 0 20px;
+    line-height: 50px;
+  }
   .col {
     min-width: 174px;
     max-width: 213px;
