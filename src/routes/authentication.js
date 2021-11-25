@@ -7,7 +7,9 @@ const router = Router();
 async function insertUser(newLink) {
   const res = await pool
     .query(
-      `INSERT INTO covid.users (name, lastname, cc, role, user, password) VALUES ("${newLink.name}", "${newLink.lastName}", "${newLink.cc}", "${newLink.role}", "${newLink.userName}", "${newLink.password}")`
+      `INSERT INTO covid.users (name, lastname, cc, role, user, password) 
+      VALUES ("${newLink.name}", "${newLink.lastName}", "${newLink.cc}", 
+      "${newLink.role}", "${newLink.userName}", "${newLink.password}")`
     )
     .catch((e) => {
       throw e;
@@ -50,7 +52,6 @@ const postAdd = async (req, res) => {
 const postLoginAdmin = async (req, res) => {
   const newLink = req.body; 
   const errors = validationResult(req);
-
   if (!errors.isEmpty()) {
     const alert = errors.array();
     res.render("links/loginAdmin", {alert, title: "Login admin"});
@@ -58,7 +59,7 @@ const postLoginAdmin = async (req, res) => {
     try {
       if (newLink.userName && newLink.password) {
         
-        await pool.query(
+        await pool.query(//Buscar si el user es medico o es ayudante
           `SELECT * FROM covid.users WHERE user="${newLink.userName}"`, 
           async (error, results) =>{
             if(results.length==0){
@@ -68,6 +69,9 @@ const postLoginAdmin = async (req, res) => {
             }else{
               req.session.loggedin = true;
               req.session.user = results[0].user
+              // req.session.medic = 
+
+              console.log(newLink.password)
               if( await verify(results[0].password, newLink.password) ){
                 console.log("REGISTER")
                 res.render("links/signup", {title: "Register"}) 
@@ -89,8 +93,7 @@ router.post("/",
     check("password", "The password must containt 6 letters")
       .exists()
       .isLength({ min: 6 }),
-  ],
-  postLoginAdmin
+  ], postLoginAdmin
 );
 
 router.get("/add", (req, res) => {
@@ -114,8 +117,7 @@ router.post("/add",
     check("password", "The password must containt 6 letters")
       .exists()
       .isLength({ min: 6 }),
-  ],
-  postAdd
+  ], postAdd
 );
 
 module.exports = router;

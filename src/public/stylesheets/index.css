@@ -29,7 +29,7 @@ myChart{
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
+  /* cursor: pointer; */
   /* width: 50%; */
 }
 .numbers {

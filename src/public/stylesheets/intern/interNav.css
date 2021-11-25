@@ -82,6 +82,7 @@
   align-items: center;
   position: fixed;
   z-index: 900;
+  box-shadow: aliceblue;
 }
 .main .topbar.active{
   width: calc(100% - 60px);
@@ -194,6 +195,9 @@
   .navigation.active{
     width: 100%;
     left: 0;
+    margin-top: 60px;
+    height: 100%;
+    transition: 0.5s;
   }
   
   .main,
