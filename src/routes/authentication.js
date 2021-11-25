@@ -14,6 +14,17 @@ async function insertUser(newLink) {
     });
   console.log("added: ", res);
 }
+async function loginDB(newLink) {
+  const response = await pool
+  .query(
+    `SELECT * FROM covid.users WHERE user="${newLink.userName}"`
+  )
+  .catch((e) => {
+    throw e;
+  });
+  console.log("Data selected: ", response);
+  return response
+}
 
 const postAdd = async (req, res) => {
   const newLink = req.body;
@@ -37,42 +48,40 @@ const postAdd = async (req, res) => {
 };
 
 const postLoginAdmin = async (req, res) => {
-  const newLink = req.body;
-  console.log(newLink);
+  const newLink = req.body; 
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
     const alert = errors.array();
-    res.render("links/loginAdmin", {
-      alert,
-    });
+    res.render("links/loginAdmin", {alert, title: "Login admin"});
   } else {
     try {
       if (newLink.userName && newLink.password) {
-        const res = (
+        const response = (
           await pool.query(
             `SELECT * FROM covid.users WHERE user="${newLink.userName}"`
           )
         )[0];
 
-        const match = await verify(res.password, newLink.password);
+        const match = await verify(response.password, newLink.password);
 
-        if (!res || !match) {
-          //TODO send error
+        if (!response || !match) {
+          console.log("Login")
+          res.render("links/loginAdmin", { title: "Login admin" }) 
         } else {
-          //TODO render next view
+          console.log("Register")         
+          res.render("links/signup", {title: "Register"}) 
         }
       } else {
       }
-    } catch {}
+    } catch {console.log("Error DB o next Web Page")}    
   }
 };
 
 router.get("/", (_req, res) => {
-  res.render("links/loginAdmin", { title: "Stay Safe Add " });
+  res.render("links/loginAdmin", { title: "Login admin" });
 });
-router.post(
-  "/",
+router.post("/",
   [
     check("password", "The password must containt 6 letters")
       .exists()
@@ -85,19 +94,19 @@ router.get("/add", (req, res) => {
   if (req.session.loggedin) {
     res.render("links/signup", {
       login: true,
-      title: "Stay Safe Add ",
+      title: "Register",
       name: req.session.name,
     });
   } else {
     res.render("links/signup", {
+      title: "Iniciar sesion",
       login: false,
       name: "Debe iniciar sesion",
     });
   }
 });
 
-router.post(
-  "/add",
+router.post("/add",
   [
     check("password", "The password must containt 6 letters")
       .exists()
