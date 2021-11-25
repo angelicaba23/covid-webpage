@@ -9,17 +9,17 @@ body {
   overflow-x: hidden;
   /* padding-top: 10px; */
 }
-.fa-edit{
-  color:#03a9f4;
+.fa-edit {
+  color: #03a9f4;
 }
 .container {
   position: relative;
   width: 100%;
 }
-.mainContainer{
+.mainContainer {
   padding-top: 80px;
 }
-.rolDropDown{
+.rolDropDown {
   width: 100%;
   padding: 0.6rem;
   border-radius: 9px;
@@ -34,18 +34,26 @@ body {
   position: relative;
   width: 100%;
   padding: 20px;
+  padding-top: 0;
   display: grid;
   grid-template-columns: repeat(1fr);
   grid-gap: 20px;
-  
+  /* background-color: #fff; */
 }
-.cardBox .card {
+.cardBox .cardRegisterHeader {
   position: relative;
-  background-color: #fff;
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  /* border-radius: 15px; */
+}
+.cardBox .cardRegister{
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  padding: 20px;
+  display: grid;
+
 }
 
 .cardBox .card .numbers {
@@ -60,6 +68,10 @@ body {
   font-size: 2.5em;
   color: #03a9f4;
 }
+.cardBox .card .cardRegisterHeader .fa-user-plus{
+  font-size: auto;
+  color: #03a9f4;
+}
 .fa-virus-slash {
   color: #4de14d;
 }
@@ -71,7 +83,7 @@ body {
 .details {
   position: relative;
   width: 100%;
-  padding: 20px;
+  /* padding: 20px; */
   padding-top: 0px;
   display: grid;
   grid-gap: 20px;

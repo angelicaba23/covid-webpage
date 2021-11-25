@@ -26,21 +26,69 @@
         
             <div class="cardBox">
                 <div class="card">
-                    <div>
-                        <div class="numbers">Register new patients</div>
-                        <div class="cardName">Positives</div>
-                    </div>
-                    <div class="iconBox">
-                        <div class="user">
-                            <i class="fas fa-viruses" aria-hidden="true"></i>
+                    <div class="cardRegisterHeader">                        
+                        <div>
+                            <div class="numbers">  Register patients </div>
                         </div>
-                    </div>  
-                </div>  
+                        <div class="iconBox">                          
+                            <i class="fas fa-user-plus" aria-hidden="true"></i>
+                        </div>
+                    </div>    
 
-                <p>
-                    dadadddddddddddddd
-                </p>                                
-            </div>
+                    <form action="/signin" method="POST">
+                        <div class="cardRegister">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" 
+                                name="patientName" placeholder="Patient's name" autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" 
+                                name="patientLastName" placeholder="Patients's lastname" autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" 
+                                name="patientCC" placeholder="C.C." autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" 
+                                name="patientGender" placeholder="Gender" autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control" 
+                                name="patientBirthdate" placeholder="Patient's birthdate" autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" 
+                                name="addressHome" placeholder="Address Home" autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" 
+                                name="addressWork" placeholder="Address Work" autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" 
+                                name="resultCovid" placeholder="resultCovid" autofocus />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" 
+                                name="userName" placeholder="Name" autofocus />
+                            </div>
+
+                        </div>                        
+                        
+                        <div class="form-group">
+                            <p class=button-mb-5>
+                            <button class="btn btn-success btn-block">
+                            <a  class="btn-primary">
+                                Register</a>
+                            </button>
+                            </p>
+                        </div>
+                    </form>   
+
+                </div>
+            <div>
 
     <% } else{ %>
         <div class="container mainContainer"></div>

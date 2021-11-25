@@ -57,24 +57,27 @@ const postLoginAdmin = async (req, res) => {
   } else {
     try {
       if (newLink.userName && newLink.password) {
-        const response = (
-          await pool.query(
-            `SELECT * FROM covid.users WHERE user="${newLink.userName}"`
-          )
-        )[0];
-
-        const match = await verify(response.password, newLink.password);
-
-        if (!response || !match) {
-          console.log("Login")
-          res.render("links/loginAdmin", { title: "Login admin" }) 
-        } else {
-          console.log("Register")         
-          res.render("links/signup", {title: "Register"}) 
-        }
+        
+        await pool.query(
+          `SELECT * FROM covid.users WHERE user="${newLink.userName}"`, 
+          async (error, results) =>{
+            if(results.length==0){
+              req.session.loggedin = false;
+              console.log("LOGIN")
+              res.render("links/loginAdmin", { title: "Login admin" }) 
+            }else{
+              req.session.loggedin = true;
+              req.session.user = results[0].user
+              if( await verify(results[0].password, newLink.password) ){
+                console.log("REGISTER")
+                res.render("links/signup", {title: "Register"}) 
+              }                                        
+            }
+          } 
+        )
       } else {
       }
-    } catch {console.log("Error DB o next Web Page")}    
+    } catch { console.error(e) }    
   }
 };
 
@@ -95,13 +98,13 @@ router.get("/add", (req, res) => {
     res.render("links/signup", {
       login: true,
       title: "Register",
-      name: req.session.name,
+      user: req.session.user,
     });
   } else {
-    res.render("links/signup", {
-      title: "Iniciar sesion",
+    res.render("links/loginAdmin", {
+      title: "Login admin",
       login: false,
-      name: "Debe iniciar sesion",
+      user: "Debe iniciar sesion",
     });
   }
 });
