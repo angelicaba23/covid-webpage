@@ -30,6 +30,16 @@ body {
   font-size: 0.9rem;
   cursor: pointer;
 }
+.form{
+  display: none;
+}
+.form.active{
+  transition: 0.5s;
+  display: block;
+}
+.card.cardContain{
+  height: auto;
+}
 .cardBox {
   position: relative;
   width: 100%;
@@ -42,23 +52,23 @@ body {
 }
 .cardBox .cardRegisterHeader {
   position: relative;
-  padding: 20px 20px 0px 20px;
+  /* margin: auto; */
+  padding: 20px 20px 20px 20px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   /* border-radius: 15px; */
 }
-.cardBox .cardRegister{
+.cardBox .cardRegister {
   grid-template-columns: repeat(2, 1fr);
   position: relative;
-  padding: 20px;
+  padding: 0px 20px 20px 20px;
   display: grid;
-
 }
 
 .cardBox .card .numbers {
   position: relative;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 500;
 }
 .cardBox .card .cardName {
@@ -68,7 +78,7 @@ body {
   font-size: 2.5em;
   color: #03a9f4;
 }
-.cardBox .card .cardRegisterHeader .fa-user-plus{
+.cardBox .card .cardRegisterHeader .fa-user-plus {
   font-size: auto;
   color: #03a9f4;
 }
@@ -87,6 +97,7 @@ body {
   padding-top: 0px;
   display: grid;
   grid-gap: 20px;
+  /* height: auto; */
   grid-template-columns: 1fr 2fr;
 }
 .details .recentPatients {
@@ -201,6 +212,36 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.form-group {
+  margin: 5px;
+}
+.registerMenu{
+  vertical-align: top;
+  position: relative;
+  width: 40px;
+  color: #fff;
+  z-index: 2000;
+  
+}
+.registerMenu::before {
+  content: "\f234";
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: auto;
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+  z-index: 5000;
+}
+.form-control {
+  border-radius: 5px;
+  background-color: #c7c8c73b;
+  padding: 3px 0;
+  border-style: none;
+  width: 100%;
 }
 @media (max-width: 992px) {
   .cardBox {

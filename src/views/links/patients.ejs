@@ -12,7 +12,7 @@
     <link rel='stylesheet' href='/stylesheets/intern/cards.css' />
     <link rel='stylesheet' href='/stylesheets/intern/interNav.css' />
     <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
-    <script src="/javascripts/buttonId.js"></script>
+    <script src="/javascripts/intern.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -25,17 +25,15 @@
         <div class="container mainContainer">
         
             <div class="cardBox">
-                <div class="card">
-                    <div class="cardRegisterHeader">                        
+                <div class="card cardContain">
+                    <div class="cardRegisterHeader" onclick="registerMenu();">                        
                         <div>
                             <div class="numbers">  Register patients </div>
                         </div>
-                        <div class="iconBox">                          
-                            <i class="fas fa-user-plus" aria-hidden="true"></i>
-                        </div>
+                        <div class="registerMenu"></div>
                     </div>    
 
-                    <form action="/signin" method="POST">
+                    <form class= "form" action="/signin" method="POST">
                         <div class="cardRegister">
 
                             <div class="form-group">
@@ -69,10 +67,6 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" 
                                 name="resultCovid" placeholder="resultCovid" autofocus />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" 
-                                name="userName" placeholder="Name" autofocus />
                             </div>
 
                         </div>                        
@@ -151,22 +145,6 @@
         </div>
     </div>
 
-
-    <script>
-        function toggleMenu() {
-            let toggle = document.querySelector('.toggle');
-            let navigation = document.querySelector('.navigation')
-            let main = document.querySelector('.main')
-            let details = document.querySelector('.details')
-            let topbar = document.querySelector('.topbar')
-
-            toggle.classList.toggle('active')
-            navigation.classList.toggle('active')
-            main.classList.toggle('active')
-            details.classList.toggle('active')
-            topbar.classList.toggle('active')
-        }
-    </script>
 </body>
 
 </html>

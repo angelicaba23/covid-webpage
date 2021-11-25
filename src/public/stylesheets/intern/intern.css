@@ -147,6 +147,7 @@ body {
   text-decoration: none;
 }
 .details .recentCases {
+  /* display: none; */
   position: relative;
   min-height: 530px;
   background: #fff;
