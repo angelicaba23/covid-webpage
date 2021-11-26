@@ -25,7 +25,7 @@ router.get("/intern/patients", async (req, res) => {
 
     res.render("links/patients", {
       links: links, title: 'Edit case ',
-      idButton: id, 6: false, medico: req.session.medic
+      idButton: id, edit: false, medico: req.session.medic
     });
   } else {
     res.redirect("/signin");
@@ -70,14 +70,11 @@ router.post('/intern/patients/:id/edit', async (req, res) => {
     var id = url.toString().split("/"); id = id[3];
     const newLink = req.body; 
     console.log("");
-    console.log(id)
+    console.log(newLink)
     console.log("");
-    res.render("links/patients", {
-      links: links, title: 'Edit case ' + id,
-      idButton: id, edit: false, medico: req.session.medic
-    });
+    res.redirect("/links/intern/patients/"+id);
   } else {
-    res.redirect("/signin");
+    res.redirect("/links/intern/patients/");
   }
 });
 module.exports = router;
