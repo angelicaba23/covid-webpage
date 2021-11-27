@@ -29,25 +29,35 @@ const postLogin = async (req, res) => {
         //Hay que buscar si ese usuario está registrado como doctor o como ayudante
         `SELECT * FROM covid.users WHERE user="${newLink.userName}"`,
         async (error, results) => {
-
           if (results.length == 0) {
             req.session.inern = false;
-            res.render("login", { title: "Login" });
+            res.redirect("/signin");
           } else {
             req.session.inern = true;
-            req.session.medic = false;
+            
             req.session.user = results[0].user
-            console.log(newLink.password)
-            if (await verify(results[0].password, newLink.password)) {
-              res.redirect("links/intern");
+            //console.log(newLink.password)
+
+            if (results[0].role == '3'){
+              res.redirect("/admin");
+            }else{
+              if (results[0].role == '1'){
+                req.session.medic = true;
+              } else{
+                req.session.medic = false;
+              }
+              if (await verify(results[0].password, newLink.password)) {
+                res.redirect("links/intern");
+              }else {
+                res.redirect("/signin");
+              }
             }
           }
-
         }
       )
     } else {
       //Poner una alerta con swit alert que indique esto:
-      console.log("Usuario o password NO validos")
+      console.log("Missing user or pass")
       res.render("login", { title: "Login" });
     }
   } catch { console.error(e) }

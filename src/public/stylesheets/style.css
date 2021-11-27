@@ -2,6 +2,8 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+
 body {
   font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
@@ -12,10 +14,10 @@ body {
 }
 .hero-v1 {
   padding: 0 20px 0;
-  /* background: rgba(111, 66, 193, 0.1); */
+  background: rgba(111, 66, 193, 0.1); 
   border-bottom-right-radius: 50%;
   overflow: hidden;
-  /* height: 100%; */
+  height: 100%;
 }
 .img-fluid {
   width: 100%;

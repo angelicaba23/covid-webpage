@@ -13,6 +13,7 @@
     <link rel='stylesheet' href='/stylesheets/intern/interNav.css' />
     <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
     <script src="/javascripts/intern.js" crossorigin="anonymous"></script>
+    <script defer src="/javascripts/assistant.js" ></script>
 </head>
 
 <body>
@@ -32,7 +33,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">#casos activos</div>
+                        <div class="numbers">#Positives Cases</div>
                         <div class="cardName">Positives</div>
                     </div>
                     <div class="iconBox">
@@ -44,7 +45,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">#casos negativos</div>
+                        <div class="numbers">#Negatives Cases</div>
                         <div class="cardName">Negatives</div>
                     </div>
                     <div class="iconBox">  
@@ -57,10 +58,20 @@
 
                 <div class="recentCases">
                     <div class="cardHeader">
-                        <h2>Statics</h2>
+                        <h2>Filter by</h2>
                     </div>
                     <!--  <%- include('../charts') %>   -->
-                    
+                    <div class="filterPatients">
+                        </br>
+                        <h4>ID CASE</h4>
+                        <input id="filterIDcase" type="text" class="form-control" name="filterIDcase" placeholder="ID case" autofocus />
+                        </br>
+                        <h4>NAME</h4>
+                        <input id="filterName" type="text" class="form-control" name="filterName" placeholder="name" autofocus />
+                        </br>
+                        <h4>ID PATIENT</h4>
+                        <input id="filterID" type="text" class="form-control" name="filterID" placeholder="ID patient" autofocus />
+                    </div>
                 </div>
 
                 <div class="recentPatients">

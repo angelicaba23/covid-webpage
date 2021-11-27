@@ -10,13 +10,12 @@ router.get("/intern", async (req, res) => {
     console.log(links[1].name);
     id = 0;
     res.render("links/intern", {
-      links: links, title: "Internes",
+      links: links, title: "Dashboard",
       idButton: id, edit: false
     });
   } else {
     res.redirect("/signin");
   }
-
 });
 router.get("/intern/patients", async (req, res) => {
   if (req.session.inern) {
@@ -76,5 +75,21 @@ router.post('/intern/patients/:id/edit', async (req, res) => {
   } else {
     res.redirect("/links/intern/patients/");
   }
+});
+
+router.post('/intern', async (req, res) => {
+if (req.session.inern) {
+  const links = await pool.query(`SELECT * FROM covid.cases WHERE `);
+  const url = req.url;
+  var id = url.toString().split("/");
+  id = id[3];
+
+  res.render("links/patients", {
+    links: links, title: 'Edit case ' + id,
+    idButton: id, edit: true, medico: req.session.medic
+  });
+} else {
+  res.redirect("/signin");
+}
 });
 module.exports = router;
