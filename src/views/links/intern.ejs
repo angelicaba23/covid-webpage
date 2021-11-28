@@ -67,7 +67,7 @@
                             <div class="registerMenu"></div>
                         </div> 
     
-                        <form class= "form" action="/links/<%=url%>" method="POST">
+                        <form class= "form" action="/links/register" method="POST">
                             <div class="cardRegister">
     
                                 <div class="form-group">
@@ -168,11 +168,11 @@
                                 <td>
                                     <%= links[i].name %>
                                         <%= links[i].lastname %>
+                                        <%=links[i].color%>
                                 </td>
                                 <td>
-                                    <button class="patientState" style="background: red;">
-                                        <a href="/links/intern/<%=links[i].idcase%>" class="patientState"
-                                            style="background: red;">Hospital Treatment </a>
+                                    <button class="patientState" style="background: <%=links[i].color%>;">
+                                        <a href="/links/intern/<%=links[i].idcase%>" class="patientState">Hospital Treatment </a>
                                     </button>
                                 </td>
                                 <td>

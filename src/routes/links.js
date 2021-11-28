@@ -4,7 +4,23 @@ const pool = require("../accesDB");
 
 router.get("/intern", async (req, res) => {
   if (req.session.inern) {
-    const links = await pool.query(`SELECT * FROM covid.cases`);
+    iidcase = ''
+    nameee = ''
+    idd = ''
+    newQuery = `WITH ONEQUERY AS (
+      SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
+      FROM covid.statepatient as s
+      GROUP BY idcase
+      )
+      SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, st.color, s.datestate
+      FROM covid.statepatient as s
+      INNER JOIN ONEQUERY AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
+      INNER JOIN covid.cases AS c ON s.idcase = c.idcase
+      INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
+      INNER JOIN covid.states AS st ON st.idstate = s.state
+      WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"`
+
+    const links = await pool.query(newQuery);
     console.log(links[1].name);
     id = 0;
     res.render("links/intern", {
@@ -85,6 +101,27 @@ router.post('/intern/:id', async (req, res) => {
     res.redirect("/links/intern");
   }  
 });
+router.post('/register', async (req, res) => {
+  if (req.session.inern) {
+    console.log("register");
+    infoNewP = req.body;
+    console.log(infoNewP.patientName);
+    
+    const res = await pool
+    .query(
+      `INSERT INTO covid.cases (name, lastname, cc, gender, birthdate, addresshome, addresswork, resultcovid, dateexam)
+       VALUES  ("${infoNewP.patientName}", "${infoNewP.patientLastName}", "${infoNewP.patientCC}", "${infoNewP.patientGender}", "${infoNewP.patientBirthdate}", "${infoNewP.addressHome}", "${infoNewP.addressWork}", "${infoNewP.resultCovid}", "2021-11-23")`
+    )
+    .catch((e) => {
+      throw e;
+    });
+    console.log("added: ", res);
+
+  } else {
+    res.redirect("/links/intern");
+  }  
+});
+
 router.post('/filter', async (req, res) => {
   if (req.session.inern) {
     infoFilter = req.body;
@@ -92,19 +129,21 @@ router.post('/filter', async (req, res) => {
     iidcase = infoFilter[0]
     nameee = infoFilter[1]
     idd = infoFilter[2]
+    try{
     newQuery = `WITH ONEQUERY AS (
-      SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
-      FROM covid.statepatient as s
-      GROUP BY idcase
-      )
-      SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, st.color, s.datestate
-      FROM covid.statepatient as s
-      INNER JOIN ONEQUERY AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
-      INNER JOIN covid.cases AS c ON s.idcase = c.idcase
-      INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
-      INNER JOIN covid.states AS st ON st.idstate = s.state
-      WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"`
+    SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
+    FROM covid.statepatient as s
+    GROUP BY idcase
+    )
+    SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, st.color, s.datestate
+    FROM covid.statepatient as s
+    INNER JOIN ONEQUERY AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
+    INNER JOIN covid.cases AS c ON s.idcase = c.idcase
+    INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
+    INNER JOIN covid.states AS st ON st.idstate = s.state
+    WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"`
     const response = await pool.query(newQuery);
+    }catch(e) {}
     res.json(response);
   } else {
     res.redirect("/signin");
