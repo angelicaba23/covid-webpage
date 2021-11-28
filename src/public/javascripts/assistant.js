@@ -2,6 +2,10 @@ const filterIDcase = document.getElementById('filterIDcase');
 const filterName = document.getElementById('filterName');
 const filterID = document.getElementById('filterID');
 
+
+//document.getElementById("numPos").innerHTML = "";
+//document.getElementById("numNeg").innerHTML = "";
+
 async function filterPatients(idcase, name, id) {
     const data = [idcase,name,id];
     console.log(data);

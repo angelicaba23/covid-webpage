@@ -75,7 +75,7 @@
   width: calc(100% - 300px);
   transition: 0.5s;
   background: #fff;
-  height: 60px;
+  height: 70px;
   padding: 0 10px;
   display: flex;
   justify-content: space-between;
@@ -110,15 +110,21 @@
 }
 .search {
   position: relative;
-  width: 400px;
-  margin: 0 10px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  
+}
+.search div {
+
+  padding: 10px;
 }
 .search label {
   position: relative;
   width: 100%;
 }
 .search label input {
-  width: 100%;
+  width: 80%;
   height: 40px;
   border-radius: 40px;
   padding: 5px 20px;

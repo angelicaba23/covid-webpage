@@ -18,14 +18,24 @@ router.get("/intern", async (req, res) => {
       INNER JOIN covid.cases AS c ON s.idcase = c.idcase
       INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
       INNER JOIN covid.states AS st ON st.idstate = s.state
-      WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"`
+      WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"
+      ORDER BY c.idcase ASC`
 
     const links = await pool.query(newQuery);
-    console.log(links[1].name);
+    console.log(links);
     id = 0;
+    numPos = 0
+    numNeg = 0
+    links.forEach(patient => {
+      if (patient.covidresult == 'Positive'){
+        numPos++
+      }else{
+        numNeg++
+      }
+  });
     res.render("links/intern", {
       links: links, title: "Dashboard",
-      idButton: id, edit: false
+      idButton: id, edit: false, numPos: numPos , numNeg: numNeg
     });
   } else {
     res.redirect("/signin");
@@ -33,7 +43,23 @@ router.get("/intern", async (req, res) => {
 });
 router.get('/intern/:id', async (req, res) => {
   if (req.session.inern) {
-    const links = await pool.query(`SELECT * FROM covid.cases`);
+    iidcase = ''
+    nameee = ''
+    idd = ''
+    newQuery = `WITH ONEQUERY AS (
+      SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
+      FROM covid.statepatient as s
+      GROUP BY idcase
+      )
+      SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, st.color, s.datestate
+      FROM covid.statepatient as s
+      INNER JOIN ONEQUERY AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
+      INNER JOIN covid.cases AS c ON s.idcase = c.idcase
+      INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
+      INNER JOIN covid.states AS st ON st.idstate = s.state
+      WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"
+      ORDER BY c.idcase ASC`
+    const links = await pool.query(newQuery);
     const url = req.url;
     var id = url.toString().split("/");
     id = id[2];
@@ -115,23 +141,35 @@ router.post('/register', async (req, res) => {
     const res = await pool
     .query(
       `INSERT INTO covid.cases (name, lastname, cc, gender, birthdate, addresshome, addresswork, resultcovid, dateexam)
-       VALUES  ("${infoNewP.patientName}", "${infoNewP.patientLastName}", "${infoNewP.patientCC}","${infoNewP.patientGender}", "${infoNewP.patientBirthdate}", "${infoNewP.addressHome}", "${infoNewP.addressWork}", "${infoNewP.resultCovid}", "2021-11-23")`
-    )
-    .catch((e) => {
-      throw e;
+      VALUES  ("${infoNewP.patientName}", "${infoNewP.patientLastName}", "${infoNewP.patientCC}","${infoNewP.patientGender}", "${infoNewP.patientBirthdate}", "${infoNewP.addressHome}", "${infoNewP.addressWork}", "${infoNewP.resultCovid}", "${infoNewP.examDate}")`
+      )
+      .catch((e) => {
+        throw e;
+      });
+      console.log("added: ", res);
+      
+      const res2 = await pool
+      .query(
+        `INSERT INTO covid.statepatient (idcase, state) VALUES ("${res.insertId}", "0");`
+        )
+        .catch((e) => {
+          throw e;
+        });
+        console.log("added: ", res2);
+      } else {
+        console.log("not register");
+      } 
+      const url = req.url;
+      var id = url.toString().split("/"); id = id[2]; 
+      console.log(url)
+      console.log(id)
+      res.redirect("/links/intern/"+id);
     });
-    console.log("added: ", res);
-  } else {
-    console.log("not register");
-  } 
-  const url = req.url;
-  var id = url.toString().split("/"); id = id[2]; 
-  res.redirect("/links/intern/" + id);
-});
 
 router.post('/filter', async (req, res) => {
   console.log("filter")
   if (req.session.inern) {
+    nameee = ''
     infoFilter = req.body;
     console.log(infoFilter);
     iidcase = infoFilter[0]
