@@ -105,12 +105,12 @@ router.post('/register', async (req, res) => {
   if (req.session.inern) {
     console.log("register");
     infoNewP = req.body;
-    console.log(infoNewP.patientName);
+    console.log(infoNewP);
     
     const res = await pool
     .query(
       `INSERT INTO covid.cases (name, lastname, cc, gender, birthdate, addresshome, addresswork, resultcovid, dateexam)
-       VALUES  ("${infoNewP.patientName}", "${infoNewP.patientLastName}", "${infoNewP.patientCC}", "${infoNewP.patientGender}", "${infoNewP.patientBirthdate}", "${infoNewP.addressHome}", "${infoNewP.addressWork}", "${infoNewP.resultCovid}", "2021-11-23")`
+       VALUES  ("${infoNewP.patientName}", "${infoNewP.patientLastName}", "${infoNewP.patientCC}","${infoNewP.patientGender}", "${infoNewP.patientBirthdate}", "${infoNewP.addressHome}", "${infoNewP.addressWork}", "${infoNewP.resultCovid}", "2021-11-23")`
     )
     .catch((e) => {
       throw e;
@@ -118,7 +118,7 @@ router.post('/register', async (req, res) => {
     console.log("added: ", res);
 
   } else {
-    res.redirect("/links/intern");
+    console.log("not register");
   }  
 });
 
