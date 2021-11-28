@@ -2,18 +2,19 @@
     width: 100%;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     border-radius: 15px;
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
     background-color: white;
 }
 .card .card_header{
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    /* justify-content: space-between; */
     align-items: center;
     padding: 1em .5em;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     color: #ffff;
+    /* grid-template-columns: repeat(3, 1fr); */
 }
 .red{
     /* background-color: #EB5757; */
@@ -27,17 +28,20 @@
 }
 .card .card_header .tittle,.card .card_header .id{
     display: flex;
+    width: 100%;
     align-items: center;
+    justify-content: space-between;
 }
 .card .card_header .circle{
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     width: 32px;
     height: 32px;
     border-radius: 50%;
     border: 1px solid #ffff;
-    padding: 1em;
+    /* padding: 1em; */
+    /* width: auto; */
 }
 .card .card_header .tittle p{
     margin-left: .5em;

@@ -1,8 +1,6 @@
-const { request } = require("express");
 const express = require("express");
 const router = express.Router();
 const pool = require("../accesDB");
-const app = express();
 
 router.get("/intern", async (req, res) => {
   if (req.session.inern) {
@@ -17,79 +15,73 @@ router.get("/intern", async (req, res) => {
     res.redirect("/signin");
   }
 });
-router.get("/intern/patients", async (req, res) => {
-  if (req.session.inern) {
-    const links = await pool.query(`SELECT * FROM covid.cases`);
-    const url = req.url;
-
-    res.render("links/patients", {
-      links: links, title: 'Edit case ',
-      idButton: id, edit: false, medico: req.session.medic
-    });
-  } else {
-    res.redirect("/signin");
-  }
-});
-router.get('/intern/patients/:id', async (req, res) => {
-
+router.get('/intern/:id', async (req, res) => {
   if (req.session.inern) {
     const links = await pool.query(`SELECT * FROM covid.cases`);
     const url = req.url;
     var id = url.toString().split("/");
-    id = id[3];
+    id = id[2];
 
-    res.render("links/patients", {
+    res.render("links/intern", {
       links: links, title: 'Edit case ' + id,
-      idButton: id, edit: false, medico: req.session.medic
+      idButton: id, edit: false, medico: req.session.medic, url: url
     });
   } else {
     res.redirect("/signin");
   }
 });
-router.get('/intern/patients/:id/edit', async (req, res) => {
-
+router.get('/intern/:id/edit', async (req, res) => {
   if (req.session.inern) {
     const links = await pool.query(`SELECT * FROM covid.cases`);
     const url = req.url;
     var id = url.toString().split("/");
-    id = id[3];
+    id = id[2];
+    console.log("")
+    console.log(id)
+    console.log("")
 
-    res.render("links/patients", {
+    res.render("links/intern", {
       links: links, title: 'Edit case ' + id,
-      idButton: id, edit: true, medico: req.session.medic
+      idButton: id, edit: true, medico: req.session.medic, url: url
     });
   } else {
     res.redirect("/signin");
   }
 });
-router.post('/intern/patients/:id/edit', async (req, res) => {
-  const links = await pool.query(`SELECT * FROM covid.cases`);
+
+// Desde aqui van post para lo de Register Patients y subir datos a la DB
+router.post('/intern/:id/edit', async (req, res) => {
   if (req.session.inern) {
     const url = req.url;
-    var id = url.toString().split("/"); id = id[3];
-    const newLink = req.body; 
+    var id = url.toString().split("/"); id = id[2];
+    const newLink = req.body;
     console.log("");
     console.log(newLink)
     console.log("");
-    res.redirect("/links/intern/patients/"+id);
+    console.log(url);
+    console.log("");
+    res.redirect("/links/intern/" + id);
   } else {
-    res.redirect("/links/intern/patients/");
+    res.redirect("/links/intern");
   }
 });
 
-router.post('/intern', async (req, res) => {
-if (req.session.inern) {
-  const links = await pool.query(`SELECT * FROM covid.cases WHERE `);
-  const url = req.url;
-  var id = url.toString().split("/");
-  id = id[3];
-
-  res.render("links/patients", {
-    links: links, title: 'Edit case ' + id,
-    idButton: id, edit: true, medico: req.session.medic
-  });
-} else {
-  res.redirect("/signin");
-}
+router.post('/intern/:id', async (req, res) => {
+  if (req.session.inern) {
+    const url = req.url;
+    var id = url.toString().split("/"); id = id[2];
+    const newLink = req.body;
+    console.log("");
+    console.log(newLink)
+    console.log("");
+    console.log(url);
+    console.log("");
+    res.redirect("/links/intern/"+id);
+  } else {
+    res.redirect("/links/intern");
+  }  
 });
+
+
+
 module.exports = router;

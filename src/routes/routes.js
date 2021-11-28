@@ -1,14 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../accesDB");
-const bcryptjs = require("bcryptjs");
 const { hash, verify } = require("argon2");
 const { check, validationResult } = require("express-validator");
 const { error } = require("npmlog");
 const e = require("express");
 
 const getIndex = (req, res, next) => {
-  res.render("index", { title: "Covid-19 Stats",});
+  res.render("index", { title: "Covid-19 Stats", });
 };
 const getPrevention = (req, res, next) => {
   res.render("prevention", { title: "Covid-19 Stats Prevention" });
@@ -22,7 +21,7 @@ const getLogin = (req, res, next) => {
 const postLogin = async (req, res) => {
   const newLink = req.body;
   const errors = validationResult(req);
-
+  console.log(newLink)
   try {
     if (newLink.userName && newLink.password) {
       await pool.query(
@@ -33,22 +32,20 @@ const postLogin = async (req, res) => {
             req.session.inern = false;
             res.redirect("/signin");
           } else {
-            req.session.inern = true;
-            
             req.session.user = results[0].user
-            //console.log(newLink.password)
 
-            if (results[0].role == '3'){
+            if (results[0].role == '3') {
               res.redirect("/admin");
-            }else{
-              if (results[0].role == '1'){
+            } else {
+              if (results[0].role == '1') {
                 req.session.medic = true;
-              } else{
+              } else {
                 req.session.medic = false;
               }
               if (await verify(results[0].password, newLink.password)) {
+                req.session.inern = true;
                 res.redirect("links/intern");
-              }else {
+              } else {
                 res.redirect("/signin");
               }
             }
@@ -65,10 +62,9 @@ const postLogin = async (req, res) => {
 
 };
 const logout = async (req, res) => {
-  req.session.destroy(()=>{
+  req.session.destroy(() => {
     res.redirect('/')
   })
-
 }
 
 module.exports = {
