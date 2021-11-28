@@ -225,6 +225,13 @@ body {
   height: 100%;
   object-fit: cover;
 }
+.form-control, .roleDropDown{
+  border-radius: 30px;
+  padding: 10px 10px;
+  z-index: 2000;
+  /*margin: 7px 0;*/
+  width: auto;
+}
 @media (max-width: 992px) {
   .cardBox {
     grid-template-columns: repeat(1, 1fr);

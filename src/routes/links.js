@@ -72,17 +72,22 @@ router.post('/intern/:id/edit', async (req, res) => {
   if (req.session.inern) {
     const url = req.url;
     var id = url.toString().split("/"); id = id[2];
-    const newLink = req.body;
-    console.log("");
-    console.log(newLink)
-    console.log("");
-    console.log(url);
-    console.log("");
-    res.redirect("/links/intern/" + id);
-    
+    const newState = req.body;
+    console.log("Edit statePatient");
+    console.log(newState.statePatient);
+    const res = await pool
+    .query(
+      `INSERT INTO covid.statepatient (idcase, state) VALUES ("${id}", "${newState.statePatient}");`
+    )
+    .catch((e) => {
+      throw e;
+    });
+    console.log("added: ", res);
   } else {
+    console.log("not updated");
     res.redirect("/links/intern");
-  }
+  }  
+  res.redirect("/links/intern/" + id);
 });
 
 router.post('/intern/:id', async (req, res) => {
@@ -116,10 +121,12 @@ router.post('/register', async (req, res) => {
       throw e;
     });
     console.log("added: ", res);
-
   } else {
     console.log("not register");
-  }  
+  } 
+  const url = req.url;
+  var id = url.toString().split("/"); id = id[2]; 
+  res.redirect("/links/intern/" + id);
 });
 
 router.post('/filter', async (req, res) => {
