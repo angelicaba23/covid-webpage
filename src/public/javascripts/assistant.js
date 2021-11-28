@@ -13,9 +13,27 @@ async function filterPatients(idcase, name, id) {
         },
         body: JSON.stringify(data)
     }
-    const response = await fetch('/filter', options);
-    //const dates = await response.json();
+    const response = await fetch('/links/filter', options);
+    const dates = await response.json();
+    console.log(dates);
+    
+    let div = document.getElementById("tbody");
+    div.innerHTML = "";
+    dates.forEach(patient => {
+        div.innerHTML += "<tr>"+
+                            "<td>"+patient.idcase+"</td>"+
+                            "<td>"+patient.name+" "+patient.lastname+"</td>"+
 
+                            "<td>"+
+                            '<button class="patientState" style="background:'+patient.color+'";>'+
+                            '<a href="/links/intern/'+patient.idcase+'"class="patientState">'+patient.state+'</a>'+
+                            "</button>"+
+                            "</td>"+
+                            "<td>"+patient.addresshome+"</td>"+
+                            "<td>"+patient.covidresult+"</td>"+
+                            "<td>"+patient.datestate+"</td>"+
+                         "</tr>"
+    });
 }
 
 filterIDcase.addEventListener('change',  function () {

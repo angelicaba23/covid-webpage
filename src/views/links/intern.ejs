@@ -136,17 +136,7 @@
                         <h2>Filter by</h2>
                     </div>
                     <!--  <%- include('../charts') %>   -->
-                    <div class="filterPatients">
-                        </br>
-                        <h4>ID CASE</h4>
-                        <input id="filterIDcase" type="text" class="form-control" name="filterIDcase" placeholder="ID case" autofocus />
-                        </br>
-                        <h4>NAME</h4>
-                        <input id="filterName" type="text" class="form-control" name="filterName" placeholder="name" autofocus />
-                        </br>
-                        <h4>ID PATIENT</h4>
-                        <input id="filterID" type="text" class="form-control" name="filterID" placeholder="ID patient" autofocus />
-                    </div>
+                    
                 </div>
             <% } else { %>
                 <%- include('../layouts/casesInfo') %>    
@@ -161,14 +151,14 @@
                     <thead>
                         <tr>
                             <td>ID case</td>
-                            <td>Name and LastName</td>
+                            <td>Full Name</td>
                             <td>Patient status</td>
                             <td>Address home</td>
                             <td>Covid State</td>
                             <td>Last state date</td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody">
                         <% for(var i=0; i<links.length; i++) {%>
 
                             <tr>

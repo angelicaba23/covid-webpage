@@ -50,6 +50,8 @@ router.get('/intern/:id/edit', async (req, res) => {
 });
 
 // Desde aqui van post para lo de Register Patients y subir datos a la DB
+
+
 router.post('/intern/:id/edit', async (req, res) => {
   if (req.session.inern) {
     const url = req.url;
@@ -61,6 +63,7 @@ router.post('/intern/:id/edit', async (req, res) => {
     console.log(url);
     console.log("");
     res.redirect("/links/intern/" + id);
+    
   } else {
     res.redirect("/links/intern");
   }
@@ -77,9 +80,35 @@ router.post('/intern/:id', async (req, res) => {
     console.log(url);
     console.log("");
     res.redirect("/links/intern/"+id);
+
   } else {
     res.redirect("/links/intern");
   }  
+});
+router.post('/filter', async (req, res) => {
+  if (req.session.inern) {
+    infoFilter = req.body;
+    console.log(infoFilter);
+    iidcase = infoFilter[0]
+    nameee = infoFilter[1]
+    idd = infoFilter[2]
+    newQuery = `WITH ONEQUERY AS (
+      SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
+      FROM covid.statepatient as s
+      GROUP BY idcase
+      )
+      SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, st.color, s.datestate
+      FROM covid.statepatient as s
+      INNER JOIN ONEQUERY AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
+      INNER JOIN covid.cases AS c ON s.idcase = c.idcase
+      INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
+      INNER JOIN covid.states AS st ON st.idstate = s.state
+      WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"`
+    const response = await pool.query(newQuery);
+    res.json(response);
+  } else {
+    res.redirect("/signin");
+  }
 });
 
 

@@ -181,7 +181,7 @@ body {
 .status {
   position: relative;
   padding: 2px 4px;
-  background: #f00;
+  /*background: #f00;*/
   color: #fff;
   border-radius: 14px;
   font-size: 300;
