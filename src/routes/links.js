@@ -123,6 +123,7 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/filter', async (req, res) => {
+  console.log("filter")
   if (req.session.inern) {
     infoFilter = req.body;
     console.log(infoFilter);
@@ -143,13 +144,11 @@ router.post('/filter', async (req, res) => {
     INNER JOIN covid.states AS st ON st.idstate = s.state
     WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"`
     const response = await pool.query(newQuery);
-    }catch(e) {}
     res.json(response);
+    }catch(e) {}
   } else {
     res.redirect("/signin");
   }
 });
-
-
 
 module.exports = router;

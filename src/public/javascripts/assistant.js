@@ -14,6 +14,7 @@ async function filterPatients(idcase, name, id) {
         body: JSON.stringify(data)
     }
     const response = await fetch('/links/filter', options);
+    console.log(response);
     const dates = await response.json();
     console.log(dates);
     
