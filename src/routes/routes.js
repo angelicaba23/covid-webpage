@@ -21,7 +21,6 @@ const getLogin = (req, res, next) => {
 const postLogin = async (req, res) => {
   const newLink = req.body;
   const errors = validationResult(req);
-  console.log(newLink)
   try {
     if (newLink.userName && newLink.password) {
       await pool.query(

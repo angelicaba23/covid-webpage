@@ -1,0 +1,75 @@
+<% if(medico == false) { %>     
+    <div class="formContainer">
+        <div class="card cardContain">
+            <div class="cardRegisterHeader" onclick="registerMenu();">                        
+                <div>
+                    <div class="numbers"> <h4>Register patients</h4></div>
+                </div>
+                <div class="registerMenu"></div>
+            </div> 
+
+            <form class= "form" action="/links/register" method="POST">
+                <div class="cardRegister">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" 
+                        name="patientName" placeholder="Patient's name" autofocus />
+                    </div>                                
+                    <div class="form-group">
+                        <input type="text" class="form-control" 
+                        name="patientLastName" placeholder="Patients's lastname" autofocus />
+                    </div>
+                    
+                    <div class="form-group">
+                        <select class="roleDropDown" 
+                            name="patientGender" autofocus  required>
+                            <option value="">Gender</option>
+                            <option value="2">Male</option>
+                            <option value="1">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" 
+                        name="patientCC" placeholder="C.C." autofocus />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" 
+                        name="addressHome" placeholder="Address Home" autofocus />
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" 
+                        name="patientBirthdate" placeholder="Patient's birthdate" autofocus />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" 
+                        name="addressWork" placeholder="Address Work" autofocus />
+                    </div>
+                    <div class=" form-group">
+                        <select class="roleDropDown" 
+                            name="resultCovid" autofocus  required>
+                            <option value="">Result covid</option>
+                            <option value="1">Positive</option>
+                            <option value="0">Negative</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" 
+                        name="examDate" placeholder="Exam's date" autofocus />
+                    </div>
+
+                </div>                        
+                
+                <div class="form-group">
+                    <p class=button-mb-5>
+                    <button class="btn btn-success btn-block">
+                    <a  class="btn-primary">
+                        Register</a>
+                    </button>
+                    </p>
+                </div>
+            </form>   
+
+        </div>
+    </div>
+<% } else{ %>
+<% } %>

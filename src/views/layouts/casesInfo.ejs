@@ -59,13 +59,14 @@
             <div class="card_footer">
                 <p>Last termino medico que desconozco:
                     <%=links[idButton-1].dateexam%>
+                    <%=links[idButton-1].color%>
                 </p>
             </div>
         </div>
     <% } else {%>
         <div class="card">
             <form action="/links/intern/<%=links[idButton-1].idcase%>/edit" method="POST">   
-                <div class="card_header red">
+                <div class="card_header"  style="background: <%=links[idButton-1].color%>;">
                     <div class="tittle">
                         <div class="circle"><%=idButton%></div>
                         <p>Id case:

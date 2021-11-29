@@ -84,7 +84,7 @@
   z-index: 900;
   box-shadow: aliceblue;
 }
-.main .topbar.active{
+.main .topbar.active {
   width: calc(100% - 60px);
   transition: 0.5s;
 }
@@ -113,10 +113,11 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  
+}
+.search h4 {
+  text-align: center;
 }
 .search div {
-
   padding: 10px;
 }
 .search label {
@@ -154,19 +155,13 @@
   object-fit: cover;
   z-index: 500;
 }
-.form{
-  display: none;
-}
-.form.active{
-  transition: 0.5s;
-  display: block;
-}
+
 @media (max-width: 992px) {
-  .main .topbar{
+  .main .topbar {
     transition: 0.5s;
     width: 100%;
   }
-  .main .topbar.active{
+  .main .topbar.active {
     transition: 0.5s;
     width: calc(100%-60px);
   }
@@ -186,38 +181,57 @@
     left: 60px;
   }
 }
+@media (max-width: 545px) {
+  .cardRegister {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (max-width: 480px) {
-  .main .topbar{
+  .main .topbar {
     transition: 0.5s;
     width: 100%;
   }
-  .main .topbar.active{
+  .main .topbar.active {
     transition: 0.5s;
     width: 100%;
     z-index: 1000;
     background-color: #003147;
   }
-  .main .toggle.active::before{
-    transition: 0.5s;
-    color:#fff
+  .main .topbar.active .search h4 {
+    color: #fff;
   }
-  .navigation{
+  .main .toggle.active::before {
+    transition: 0.5s;
+    color: #fff;
+  }
+  .navigation {
     width: 100%;
     left: -100%;
     z-index: 1000;
   }
-  .navigation.active{
+  .navigation.active {
     width: 100%;
     left: 0;
     margin-top: 60px;
     height: 100%;
     transition: 0.5s;
   }
-  
   .main,
-  .main.active{
+  .main.active {
     width: 100%;
     left: 0;
   }
 }
-
+@media (max-width: 410px) {
+  .search div {
+    padding: 10px 5px;
+  }
+  .cardRegister {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (max-width: 375px) {
+  .search div {
+    padding: 10px 1px;
+  }
+}

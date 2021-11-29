@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/intern/registerPatient.css' />
+    <link rel='stylesheet' href='/stylesheets/intern/cards.css' />
+    <link rel='stylesheet' href='/stylesheets/intern/interNav.css' />
+    <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
+    <script src="/javascripts/intern.js" crossorigin="anonymous"></script>
+    <script defer src="/javascripts/assistant.js" ></script>
+</head>
+
+<body>
+
+    <%- include('../layouts/interNav') %>
+
+    <div class="container mainContainer">        
+
+        <div class="formContainer">
+            <div class="card cardContain">
+                <div class="cardRegisterHeader">                        
+                    <div>
+                        <div class="numbers"> <h4>Register patients</h4></div>
+                    </div>
+                    <div class="registerMenu"></div>
+                </div> 
+    
+                <form class= "form" action="/links/register" method="POST">
+                    <div class="cardRegister">
+    
+                        <div class="form-group">
+                            <input type="text" class="form-control" 
+                            name="patientName" placeholder="Patient's name" autofocus />
+                        </div>                                
+                        <div class="form-group">
+                            <input type="text" class="form-control" 
+                            name="patientLastName" placeholder="Patients's lastname" autofocus />
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="roleDropDown" 
+                                name="patientGender" autofocus  required>
+                                <option value="">Gender</option>
+                                <option value="2">Male</option>
+                                <option value="1">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" 
+                            name="patientCC" placeholder="C.C." autofocus />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" 
+                            name="addressHome" placeholder="Address Home" autofocus />
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" 
+                            name="patientBirthdate" placeholder="Patient's birthdate" autofocus />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" 
+                            name="addressWork" placeholder="Address Work" autofocus />
+                        </div>
+                        <div class=" form-group">
+                            <select class="roleDropDown" 
+                                name="resultCovid" autofocus  required>
+                                <option value="">Result covid</option>
+                                <option value="1">Positive</option>
+                                <option value="0">Negative</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" 
+                            name="examDate" placeholder="Exam's date" autofocus />
+                        </div>
+    
+                    </div>                        
+                    
+                    <div class="form-group">
+                        <p class=button-mb-5>
+                        <button class="btn btn-success btn-block">
+                        <a  class="btn-primary">
+                            Register</a>
+                        </button>
+                        </p>
+                    </div>
+                </form>   
+    
+            </div>
+        </div>    
+
+        <div class="details">
+            <% if(idButton == 0) { %>                
+                <div class="recentCases">
+                    <div class="cardHeader">
+                        <h2>Filter by</h2>
+                    </div>
+                    <!--  <%- include('../charts') %>   -->
+                    
+                </div>
+            <% } else { %>
+                <%- include('../layouts/casesInfo') %>    
+            <% } %>        
+            
+            <div class="recentPatients">
+                <div class="cardHeader">
+                    <h2>Patientes</h2>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <td>ID case</td>
+                            <td>Full Name</td>
+                            <td>Patient status</td>
+                            <td>Address home</td>
+                            <td>Covid State</td>
+                            <td>Last state date</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <% for(var i=0; i<links.length; i++) {%>
+
+                            <tr>
+                                <td>
+                                    <%= links[i].idcase %>
+                                </td>
+                                <td>
+                                    <%= links[i].name %>
+                                        <%= links[i].lastname %>
+                                </td>
+                                <td>
+                                    <button class="patientState"  style="background: <%=links[i].color%>;">
+                                        <a href="/links/intern/<%=links[i].idcase%>" class="patientState"><%=links[i].state%> </a>
+                                    </button>
+                                </td>
+                                <td>
+                                    <%= links[i].addresshome %>
+                                </td>
+                                <td>
+                                    <%= links[i].covidresult %>
+                                </td> 
+                                <td><%= links[i].datestate %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
