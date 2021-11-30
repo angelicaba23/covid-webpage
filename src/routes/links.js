@@ -39,7 +39,7 @@ router.get("/intern", async (req, res) => {
     });
     res.render("links/intern", {
       links: links, title: "Dashboard",
-      idButton: id, edit: false, numPos: numPos, numNeg: numNeg
+      idButton: id, edit: false, numPos: numPos, numNeg: numNeg,  medico: req.session.medic
     });
   } else {
     res.redirect("/signin");
