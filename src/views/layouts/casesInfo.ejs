@@ -1,23 +1,25 @@
 
 
-<% if(idButton >0){ %>
+<% if(idButton > 0){ %>
 
     <% if(!edit){ %>
         <div class="card">
-            <div class="card_header red">
+            <div class="card_header red" style="background-color: <%=links[idButton-1].color%>;">
                 <div class="tittle" justi>   
                     <div class="containHeader">
                         <div class="circle"><%=idButton%></div>
                         <div class="idCase">
-                            <p>
+                            <h4>
                                 <%=links[idButton-1].name%>
                                 <%=links[idButton-1].lastname%>
-                            </p>
+                            </br>
+                                ID: <%=links[idButton-1].cc%>
+                            </h4>
                         </div>        
                     </div>                 
                     
                     <div>
-                        <% if(!medico){ %>
+                        <% if(!medico && links[idButton-1].state != 'Death'){ %>
                             <a href="/links/<%=url%>/edit"> 
                                 <i class="fas fa-edit"></i>
                             </a> 
@@ -26,16 +28,7 @@
                                        
                 </div>
             </div>
-            <div class="card_section">
-                <p>Result covid:
-                    <%=links[idButton-1].resultcovid%>
-                </p>
-            </div>
-            <div class="card_section">
-                <p>State patient:
-                    Estado del paciente
-                </p>
-            </div>
+            
             <div class="card_section">
                 <p>Birthdate:
                     <%=links[idButton-1].birthdate%>
@@ -52,15 +45,26 @@
                 </p>
             </div>
             <div class="card_section">
-                <p>SEX:
-                    <%=links[idButton-1].gender%>
+                <p>Gender:
+                    <%=links[idButton-1].gen%>
+                </p>
+            </div>
+            <div class="card_section">
+                <p>Result covid:
+                    <%=links[idButton-1].covidresult%> - <%=links[idButton-1].dateexam%>
+                </p>
+            </div>
+            <div class="card_section">
+                <p>Current state:
+                    <%=links[idButton-1].state%>
                 </p>
             </div>
             <div class="card_footer">
-                <p>Last termino medico que desconozco:
-                    <%=links[idButton-1].dateexam%>
-                    <%=links[idButton-1].color%>
-                </p>
+                <h4>Records</h4>
+                <% for(var i=0; i <allStates.length; i++) {%>
+                </br>
+                <p><%=allStates[i].state%> - <%=allStates[i].datestate%></p>
+                <% }%>
             </div>
         </div>
     <% } else {%>

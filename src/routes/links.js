@@ -8,19 +8,30 @@ async function pullDB(nameee, iidcase, idd) {
       FROM covid.statepatient as s
       GROUP BY idcase
       )
-      SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, st.color, s.datestate
+      SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, g.gender as gen, s.datestate, st.color
       FROM covid.statepatient as s
       INNER JOIN ONEQUERY AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
       INNER JOIN covid.cases AS c ON s.idcase = c.idcase
       INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
       INNER JOIN covid.states AS st ON st.idstate = s.state
+      INNER JOIN covid.gender AS g ON c.gender = g.idgender
       WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"
       ORDER BY c.idcase ASC`
   )
   )
   return pullDB2
 }
-
+async function pull2DB(idcase) {
+  const pull2DB2 = (await pool.query(
+    `
+    SELECT * FROM covid.statepatient as s
+    INNER JOIN covid.states AS st ON st.idstate = s.state
+    WHERE idcase = "${idcase}"
+    ORDER BY idstatepatient DESC`
+  )
+  )
+  return pull2DB2
+}
 router.get("/intern", async (req, res) => {
   iidcase = ''
   nameee = ''
@@ -71,10 +82,12 @@ router.get('/intern/:id', async (req, res) => {
     const url = req.url;
     var id = url.toString().split("/");
     id = id[2];
-
+    const allStates = await pull2DB(id);
+    console.log(allStates)
     res.render("links/intern", {
       links: links, title: 'Edit case ' + id,
-      idButton: id, edit: false, medico: req.session.medic, url: url
+      idButton: id, edit: false, medico: req.session.medic,
+      url: url, allStates: allStates
     });
   } else {
     res.redirect("/signin");
@@ -82,14 +95,18 @@ router.get('/intern/:id', async (req, res) => {
 });
 router.get('/intern/:id/edit', async (req, res) => {
   if (req.session.inern) {
-    const links = await pool.query(`SELECT * FROM covid.cases`);
+    iidcase = ''
+    nameee = ''
+    idd = ''
+    const links = await pullDB(nameee, iidcase, idd);
     const url = req.url;
     var id = url.toString().split("/");
     id = id[2];
-
+    const allStates = await pull2DB(id);
     res.render("links/intern", {
       links: links, title: 'Edit case ' + id,
-      idButton: id, edit: true, medico: req.session.medic, url: url
+      idButton: id, edit: true, medico: req.session.medic,
+      url: url, allStates: allStates
     });
   } else {
     res.redirect("/signin");
@@ -126,6 +143,7 @@ router.post('/intern/:id', async (req, res) => {
     res.redirect("/links/intern");
   }
 });
+
 router.post('/register', async (req, res) => {
   if (req.session.inern) {
     infoNewP = req.body;

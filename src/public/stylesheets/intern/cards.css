@@ -16,10 +16,7 @@
     color: #ffff;
     /* grid-template-columns: repeat(3, 1fr); */
 }
-.red{
-    /* background-color: #EB5757; */
-    /* background-color: red; */
-}
+
 .purple{
     background-color: #9B51E0;
 }
@@ -54,7 +51,7 @@
 }
 .card .card_footer{
     position: relative;
-    display: flex;
+    /*  display: flex;*/
     justify-content: space-between;
     align-items: center;
     color: #888888;
@@ -70,4 +67,7 @@
     top: 0;
     left: 0;
     border-top: 1px solid #888888;
+}
+.card h4{
+    padding: .1em .5em;
 }
