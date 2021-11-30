@@ -18,7 +18,7 @@
         </li>
         <li>
             <a href="/links/intern/patientRegister" title="Register">
-                <span class="icon"><i class="fas fa-user-injured"></i></span>
+                <span class="icon"><i class="fas fa-user-plus"></i></span>
                 <span class="title">Register</span></a>
         </li>
         <li>
@@ -61,8 +61,13 @@
                 name="filterID" placeholder="ID patient" autofocus />
             </div>
         </div>
-        <div class="user">
-            <img src="/images/symptom_high-fever.png" alt="user">
-        </div>
+        <% if(!medico){ %> 
+            <div class="user">
+                <img src="/images/assistant.png" alt="user">
+            </div>
+        <% }  else {%>
+            <div class="user">
+                <img src="/images/doctor.png" alt="user">
+            </div>
+        <% }%>
     </div>
-</div>
