@@ -14,6 +14,7 @@
     <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
     <script src="/javascripts/intern.js" crossorigin="anonymous"></script>
     <script defer src="/javascripts/assistant.js" ></script>
+    <script defer src="/javascripts/formatDate.js" ></script>
 </head>
 
 <body>
@@ -86,7 +87,7 @@
                             <td>Patient status</td>
                             <td>Address home</td>
                             <td>Covid State</td>
-                            <td>Last state date</td>
+                            <td>Last state date (mm/dd/yyyy)</td>
                         </tr>
                     </thead>
                     <tbody id="tbody">
@@ -111,7 +112,9 @@
                                 <td>
                                     <%= links[i].covidresult %>
                                 </td> 
-                                <td><%= links[i].datestate %></td>
+                                <td>
+                                    <%=new Date(links[i].datestate).getMonth()%>/<%=new Date(links[i].datestate).getDate()%>/<%=new Date(links[i].datestate).getFullYear()%>
+                                </td>
                             </tr>
                         <% } %>
                     </tbody>
@@ -120,6 +123,11 @@
         </div>
 
     </div>
+    
+    <script>
+        
+    </script>
+
 
 </body>
 

@@ -73,6 +73,21 @@ router.get('/intern/patientRegister', async (req, res) => {
     res.redirect("/signin");
   }
 });
+router.get('/intern/mapIntern', async (req, res) => {
+  if (req.session.inern) {
+    console.log("")
+    console.log("GOOGLE MAP")
+    console.log("")
+    const url = req.url;
+    var id = url.toString().split("/");
+    id = id[2];
+    res.render("links/mapIntern", {
+      title: 'Map' + id, idButton: id, medico: req.session.medic, url: url
+    });
+  } else {
+    res.redirect("/signin");
+  }
+});
 router.get('/intern/:id', async (req, res) => {
   if (req.session.inern) {
     iidcase = ''
