@@ -64,7 +64,20 @@
 
         
     <% if( (idButton == 0)) { %>                
-        <div class="details-home">
+        
+        <% if(medico) { %>      
+            <div class="details">
+                <div class="recentCases">
+                    <div class="cardHeader">
+                        <h2>Filter by</h2>
+                    </div>
+                    <!--  <%- include('../charts') %>   -->
+                    
+                </div>
+        <% } else { %>
+            <div class="details-home">
+        <% } %>        
+            
     <% } else { %>
         <div class="details">
             <%- include('../layouts/casesInfo') %>    
