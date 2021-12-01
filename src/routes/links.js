@@ -61,14 +61,20 @@ router.get('/intern/patientRegister', async (req, res) => {
     console.log("")
     console.log("REGISTER PATIENTS")
     console.log("")
-    const links = await pullDB(nameee, iidcase, idd);
-    const url = req.url;
-    var id = url.toString().split("/");
-    id = id[2];
-    res.render("links/register", {
-      links: links, title: 'Edit case ' + id,
-      idButton: id, edit: false, medico: req.session.medic, url: url
-    });
+
+    if (!req.session.medic){
+      const links = await pullDB(nameee, iidcase, idd);
+      const url = req.url;
+      var id = url.toString().split("/");
+      id = id[2];
+      res.render("links/register", {
+        links: links, title: 'Edit case ' + id,
+        idButton: id, edit: false, medico: req.session.medic, url: url
+      });
+    } else{
+      res.redirect("/intern");
+    }
+    
   } else {
     res.redirect("/signin");
   }
@@ -158,7 +164,6 @@ router.post('/intern/:id', async (req, res) => {
     res.redirect("/links/intern");
   }
 });
-
 router.post('/register', async (req, res) => {
   if (req.session.inern) {
     infoNewP = req.body;

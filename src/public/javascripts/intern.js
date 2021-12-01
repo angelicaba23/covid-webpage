@@ -8,8 +8,8 @@ function toggleMenu() {
     toggle.classList.toggle('active')
     navigation.classList.toggle('active')
     main.classList.toggle('active')
+    topbar.classList.toggle('active')    
     details.classList.toggle('active')
-    topbar.classList.toggle('active')
 }
 
 function registerMenu() {

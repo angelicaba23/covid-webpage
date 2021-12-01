@@ -16,16 +16,21 @@
                 <span class="title">Dashboard</span></a>
 
         </li>
-        <li>
-            <a href="/links/intern/patientRegister" title="Register">
-                <span class="icon"><i class="fas fa-user-plus"></i></span>
-                <span class="title">Register</span></a>
-        </li>
-        <li>
-            <a href="/links/intern/mapIntern" title="Map"><span class="icon">
-                <i class="fas fa-map-marked-alt"></i></span>
-                <span class="title">Map</span></a>
-        </li>
+        <% if( medico ) { %>                
+            <li>
+                <a href="/links/intern/mapIntern" title="Map"><span class="icon">
+                    <i class="fas fa-map-marked-alt"></i></span>
+                    <span class="title">Map</span></a>
+            </li>
+        <% } else { %>
+            <li>
+                <a href="/links/intern/patientRegister" title="Register">
+                    <span class="icon"><i class="fas fa-user-plus"></i></span>
+                    <span class="title">Register</span></a>
+            </li>  
+        <% } %>  
+        
+        
         <li>
             <a href="#" title="Help"><span class="icon">
                 <i class="fas fa-question-circle"></i></span>
