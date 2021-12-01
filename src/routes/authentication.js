@@ -29,11 +29,15 @@ async function loginDB(newLink) {
 }
 
 const postAdd = async (req, res) => {
+  console.log("")
   const newLink = req.body;
+  console.log("asdasd")
+  console.log("")
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const alert = errors.array();
     res.render("links/signup", {
+      title : "Stay Safe Add", 
       alert,
     });
   } else {
@@ -74,7 +78,7 @@ const postLoginAdmin = async (req, res) => {
               console.log(newLink.password)
               if( await verify(results[0].password, newLink.password) ){
                 console.log("REGISTER")
-                res.render("links/signup", {title: "Register"}) 
+                res.redirect("/admin/add")
               }                                        
             }
           } 
@@ -97,6 +101,9 @@ router.post("/",
 );
 
 router.get("/add", (req, res) => {
+  console.log("")
+  console.log(req.body)
+  console.log("")
   if (req.session.loggedin) {
     res.render("links/signup", {
       login: true,

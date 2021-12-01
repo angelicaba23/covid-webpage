@@ -1,0 +1,135 @@
+/* Table */
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  padding-top: 0;
+  display: grid;
+  grid-gap: 20px;
+  height: 80vh;
+  grid-template-columns: 1fr 2fr;
+}
+.recentPatients {
+  position: relative;
+  min-height: 530px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  /* margin-bottom: 20px; */
+  /* height: 30vh; */
+}
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  height: 530;
+}
+.cardHeader h2 {
+  font-weight: 600;
+}
+.btn {
+  position: relative;
+  padding: 5px 10px;
+  background: #03a9f4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+thead td {
+  font-weight: 600;
+}
+.recentPatients table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.recentPatients table tr:hover {
+  background: #03a9f4;
+  color: #fff;
+}
+.recentPatients table tr:last-child {
+  border-bottom: none;
+}
+.recentPatients table tbody tr:hover {
+  background: #03a9f4;
+  color: #fff;
+}
+.recentPatients table tr td {
+  padding: 9px 5px;
+}
+.recentPatients table thead tr td:last-child,
+.recentPatients table tbody tr td:last-child {
+  text-align: right;
+}
+
+.recentPatients table thead tr td:nth-child(2),
+.recentPatients table tbody tr td:nth-child(2),
+.recentPatients table thead tr td:nth-child(3),
+.recentPatients table tbody tr td:nth-child(3),
+.recentPatients table thead tr td:nth-child(4),
+.recentPatients table tbody tr td:nth-child(4),
+.recentPatients table thead tr td:nth-child(5),
+.recentPatients table tbody tr td:nth-child(5) {
+  text-align: center;
+}
+.status {
+  position: relative;
+  padding: 2px 4px;
+  /*background: #f00;*/
+  color: #fff;
+  border-radius: 14px;
+  font-size: 300;
+  letter-spacing: 1px;
+}
+.patientState {
+  position: relative;
+  padding: 2px 4px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.recentCases {
+  /* display: none; */
+  position: relative;
+  min-height: 530px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  overflow-y: auto;
+  width: (100% - 20px);
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+.recentCases .imgBx {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.recentCases .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.details-home {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  padding-top: 0;
+  display: grid;
+  grid-gap: 20px;
+  height: 80vh;
+}

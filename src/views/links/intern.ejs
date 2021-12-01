@@ -9,6 +9,7 @@
         <%= title %>
     </title>
     <link rel='stylesheet' href='/stylesheets/intern/intern.css' />
+    <link rel='stylesheet' href='/stylesheets/intern/tables.css' />
     <link rel='stylesheet' href='/stylesheets/intern/cards.css' />
     <link rel='stylesheet' href='/stylesheets/intern/interNav.css' />
     <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
@@ -61,18 +62,13 @@
             <%- include('../layouts/patientRegister') %>
         <% } %>
 
+        
+    <% if( (idButton == 0)) { %>                
+        <div class="details-home">
+    <% } else { %>
         <div class="details">
-            <% if(idButton == 0) { %>                
-                <div class="recentCases">
-                    <div class="cardHeader">
-                        <h2>Filter by</h2>
-                    </div>
-                    <!--  <%- include('../charts') %>   -->
-                    
-                </div>
-            <% } else { %>
-                <%- include('../layouts/casesInfo') %>    
-            <% } %>        
+            <%- include('../layouts/casesInfo') %>    
+    <% } %>        
             
             <div class="recentPatients">
                 <div class="cardHeader">
