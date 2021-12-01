@@ -7,8 +7,8 @@
   display: grid;
   grid-gap: 20px;
 }
-myChart{
-    width: 500px;
+.myChart {
+  width: 500px;
 }
 .cardBox {
   position: relative;
@@ -25,12 +25,9 @@ myChart{
 }
 .card {
   position: relative;
-  /* background-color: #fff; */
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  /* cursor: pointer; */
-  /* width: 50%; */
 }
 .numbers {
   position: relative;

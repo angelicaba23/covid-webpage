@@ -12,7 +12,6 @@
   cursor: pointer;
 }
 .overflow-y{
-  /* height: 80vh; */
   overflow-y: auto;
 }
 .container {
@@ -24,14 +23,12 @@
   position: relative;
   width: 100%;
   padding: 20px;
-  /* padding-top: 80px; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
 }
 .mainContainer {
   padding: 80px 0px 20px 0px;
-  /* margin-bottom: 20px; */
   height: 100%;
 }
 .formContainer {
@@ -100,7 +97,6 @@
   border-radius: 30px;
   padding: 10px 10px;
   z-index: 2000;
-  /* margin-top: 0px; */
   width: 100%;
   border-color: #fff;
   border: none;
@@ -116,23 +112,5 @@
 @media (max-width: 992px) {
   .cardBox {
     grid-template-columns: repeat(1, 1fr);
-  }
-}
-@media (max-width: 768px) {
-  .details {
-    height: auto;
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .cardHeaderh2 {
-    font-size: 18px;
-    font-weight: 600;
-  }
-}
-@media (max-width: 480px) {
-  .details .recentPatients {
-    overflow-x: auto;
-  }
-  .details .recentPatients table {
-    width: 600px;
   }
 }

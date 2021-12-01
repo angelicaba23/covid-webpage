@@ -9,8 +9,6 @@ body {
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   padding: 60px 0px 0;
-  /* height: 100%; */
-  /* background-color: rgba(111, 66, 193, 0.1); */
 }
 .hero-v1 {
   padding: 0 20px 0;
@@ -33,7 +31,6 @@ img.img-fluid {
   display: flex;
   max-height: 500px;
   justify-content: center;
-  /* align-items: center; */
 }
 .col {
   min-width: 380px;

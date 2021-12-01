@@ -1,7 +1,7 @@
 
 
 <% if(idButton > 0){ %>
-    <div class="card overflow-y">
+    <div class="card caseInfo overflow-y">
         <div class="card_header red" style="background-color: <%=links[idButton-1].color%>;">
             <div class="tittle" justi>   
                 <div class="containHeader">
@@ -53,40 +53,41 @@
             </p>
         </div>
         <% if(!edit){ %>
-        <div class="card_section">
-            <p>Current state:
-                <%=links[idButton-1].state%>
-            </p>
-        </div>
-        <div class="card_footer">
-            <h4>Records</h4>
-            <% for(var i=0; i <allStates.length; i++) {%>
-            </br>
-            <p><%=allStates[i].state%> - <%=allStates[i].datestate%></p>
-            <% }%>
-        </div>
+            <div class="card_section">
+                <p>Current state:
+                    <%=links[idButton-1].state%>
+                </p>
+            </div>
+            <div class="card_footer">
+                <h4>Records (mm/dd/yyyy)</h4>
+                <% for(var i=0; i <allStates.length; i++) {%>
+                    
+                    </br>
+                    <p><%=allStates[i].state%> - <%=new Date(allStates[i].datestate).getMonth()%>/<%=new Date(allStates[i].datestate).getDate()%>/<%=new Date(allStates[i].datestate).getFullYear()%></p>
+                <% }%>
+            </div>
 
         <% } else {%>
             <form action="/links/intern/<%=links[idButton-1].idcase%>/edit" method="POST"> 
-            <div class="card_section">
-                <select class="roleDropDown" 
-                name="statePatient" autofocus  required>
-                    <option value="">Patient state </option>
-                    <option value="1">In home treatment</option>
-                    <option value="2">In Hospital Treatment</option>
-                    <option value="3">In ICU</option>
-                    <option value="4">Cured</option>
-                    <option value="5">Death</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <button class="btn btn-success btn-block">
-                    Save
-                </button>
-            </div>
-        </form>
-            <% } %>
+                <div class="card_section">
+                    <select class="roleDropDown" 
+                    name="statePatient" autofocus  required>
+                        <option value="">Patient state </option>
+                        <option value="1">In home treatment</option>
+                        <option value="2">In Hospital Treatment</option>
+                        <option value="3">In ICU</option>
+                        <option value="4">Cured</option>
+                        <option value="5">Death</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <button class="btn btn-success btn-block">
+                        Save
+                    </button>
+                </div>
+            </form>
+        <% } %>
         
     </div>
 

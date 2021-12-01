@@ -2,7 +2,6 @@
 * {
   margin: 0;
   padding: 0;
-  /* padding-top: 0; */
   box-sizing: border-box;
   font-family: "Popins", sans-serif;
 }
@@ -211,7 +210,6 @@ body {
   }
   .navigation.active {
     left: 0;
-    /* width: 300px; */
   }
   .main {
     width: 100%;

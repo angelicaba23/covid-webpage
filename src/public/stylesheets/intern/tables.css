@@ -17,8 +17,6 @@
   border-radius: 15px;
   overflow-y: auto;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-  /* margin-bottom: 20px; */
-  /* height: 30vh; */
 }
 .cardHeader {
   display: flex;
@@ -79,7 +77,6 @@ thead td {
 .status {
   position: relative;
   padding: 2px 4px;
-  /*background: #f00;*/
   color: #fff;
   border-radius: 14px;
   font-size: 300;
@@ -98,7 +95,6 @@ thead td {
   text-decoration: none;
 }
 .recentCases {
-  /* display: none; */
   position: relative;
   min-height: 530px;
   background: #fff;
@@ -132,4 +128,30 @@ thead td {
   display: grid;
   grid-gap: 20px;
   height: 80vh;
+}
+
+@media (max-width: 768px) {
+  .details {
+    height: auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeaderh2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .caseInfo{
+    height: 80vh;
+  }
+  .recentPatients{
+    height: 80vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .details .recentPatients {
+    overflow-x: auto;
+  }
+  .details .recentPatients table {
+    width: 600px;
+  }
 }
