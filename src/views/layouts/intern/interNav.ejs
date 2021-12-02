@@ -54,9 +54,9 @@
 <div class="main">
     <div class="topbar">
         <div class="toggle" onclick="toggleMenu();"></div>
-        <div class="search">
+        <div class="search" id="search">
             <div>
-                <h4>CASE</h4>
+                <h4>ID CASE</h4>
                 <input id="filterIDcase" type="text" class="form-control" 
                 name="filterIDcase" placeholder="ID case" autofocus />
             </div>
@@ -66,18 +66,18 @@
                 name="filterName" placeholder="name" autofocus />
             </div>
             <div>
-                <h4>PATIENT</h4>
+                <h4>ID PATIENT</h4>
                 <input id="filterID" type="text" class="form-control" 
                 name="filterID" placeholder="ID patient" autofocus />
             </div>
         </div>
         <% if(!medico){ %> 
             <div class="user">
-                <img src="/images/assistant.png" alt="user">
+                <img src="/images/assistant.png" alt="user" onclick="toggleMenu();">
             </div>
         <% }  else {%>
             <div class="user">
-                <img src="/images/doctor.png" alt="user">
+                <img src="/images/doctor.png" alt="user" onclick="toggleMenu();">
             </div>
         <% }%>
     </div>

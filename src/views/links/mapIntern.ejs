@@ -8,12 +8,16 @@
     <title>
         <%= title %>
     </title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/intern/map.css'" />
+    <link rel='stylesheet' href='/stylesheets/intern/intern.css' />
+    <link rel="stylesheet" href="/stylesheets/intern/map.css" />
     <link rel='stylesheet' href='/stylesheets/intern/cards.css' />
     <link rel='stylesheet' href='/stylesheets/intern/interNav.css' />
     <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
     <script src="/javascripts/intern.js" crossorigin="anonymous"></script>
     <script src="/javascripts/map.js"></script>
+    <script defer
+      src="https://maps.googleapis.com/maps/api/js?key=m3e4ayo1BaL1zE&callback=initMap&libraries=&v=weekly"
+    ></script>
 </head>
 
 <body>
@@ -22,10 +26,13 @@
 
     <div class="container mainContainer">
         <div id="map">
-
+            <h1>Map</h1>
         </div>
-
     </div>
+
+    <script>
+        document.getElementById("search").innerHTML = "";
+    </script>
 </body>
 
 </html>
