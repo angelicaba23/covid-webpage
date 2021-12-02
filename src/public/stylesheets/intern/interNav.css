@@ -115,7 +115,7 @@ body {
   width: calc(100% - 300px);
   transition: 0.5s;
   background: #fff;
-  height: 70px;
+  height: 60px;
   padding: 0 10px;
   display: flex;
   justify-content: space-between;

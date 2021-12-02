@@ -8,14 +8,27 @@
     <title>
         <%= title %>
     </title>
+
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+        }   
+    </style>
+    <link rel='stylesheet' href='/stylesheets/intern/map.css' />
     <link rel='stylesheet' href='/stylesheets/intern/intern.css' />
     <link rel='stylesheet' href='/stylesheets/intern/tables.css' />
     <link rel='stylesheet' href='/stylesheets/intern/cards.css' />
     <link rel='stylesheet' href='/stylesheets/intern/interNav.css' />
+    
     <script src="https://kit.fontawesome.com/47abef14b3.js" crossorigin="anonymous"></script>
     <script src="/javascripts/intern.js" crossorigin="anonymous"></script>
     <script defer src="/javascripts/assistant.js" ></script>
     <script defer src="/javascripts/formatDate.js" ></script>
+    <script src="/javascripts/map.js" crossorigin="anonymous"></script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgTWxwYETPf4_3aTpbxrJq_F18bdRVDFU&callback=initMap">
+    </script>
 </head>
 
 <body>
@@ -68,11 +81,7 @@
             <% if(medico) { %>      
                 <div class="details">
                     <div class="recentCases">
-                        <div class="cardHeader">
-                            <h2>Filter by</h2>
-                        </div>
-                        <!--  <%- include('../charts') %>   -->
-                        
+                        <div id="map"></div>                        
                     </div>
             <% } else { %>
                 <div class="details-home">
