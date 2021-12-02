@@ -8,3 +8,8 @@ function initMap() {
   };
   map = new google.maps.Map(document.getElementById("map"), options);
 }
+
+function mapView() {
+  let toggle = document.querySelector('.map-container');
+  toggle.classList.toggle('active')
+}
