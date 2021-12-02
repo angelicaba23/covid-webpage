@@ -22,120 +22,119 @@
 
     <%- include('../layouts/intern/interNav') %>
 
-    <div class="container mainContainer">        
+        <div class="container mainContainer">        
 
-        <% if(idButton == 0) { %>
-            <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">  <%= numNeg + numPos %> </div>
-                        <div class="cardName">Total patients</div>
+            <% if(idButton == 0) { %>
+                <div class="cardBox">
+                    <div class="card">
+                        <div>
+                            <div class="numbers">  <%= numNeg + numPos %> </div>
+                            <div class="cardName">Total patients</div>
+                        </div>
+                        <div class="iconBox">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                        </div>
                     </div>
-                    <div class="iconBox">
-                        <i class="fas fa-eye" aria-hidden="true"></i>
-                    </div>
-                </div>
 
-                <div class="card">
-                    <div>
-                        <div class="numbers" id="numPos"><%= numPos %></div>
-                        <div class="cardName">Positives</div>
+                    <div class="card">
+                        <div>
+                            <div class="numbers" id="numPos"><%= numPos %></div>
+                            <div class="cardName">Positives</div>
+                        </div>
+                        <div class="iconBox">
+                            <div class="user">
+                                <i class="fas fa-viruses" aria-hidden="true"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="iconBox">
-                        <div class="user">
-                            <i class="fas fa-viruses" aria-hidden="true"></i>
+
+                    <div class="card">
+                        <div>
+                            <div class="numbers" id="numNeg"><%= numNeg %></div>
+                            <div class="cardName">Negatives</div>
+                        </div>
+                        <div class="iconBox">  
+                            <i class="fas fa-virus-slash"  aria-hidden="true"></i>   
                         </div>
                     </div>
                 </div>
+            <% } else { %>
+                <%- include('../layouts/intern/patientRegister') %>
+            <% } %>
 
-                <div class="card">
-                    <div>
-                        <div class="numbers" id="numNeg"><%= numNeg %></div>
-                        <div class="cardName">Negatives</div>
-                    </div>
-                    <div class="iconBox">  
-                        <i class="fas fa-virus-slash"  aria-hidden="true"></i>   
-                    </div>
-                </div>
-            </div>
-        <% } else { %>
-            <%- include('../layouts/intern/patientRegister') %>
-        <% } %>
-
-        
-    <% if( (idButton == 0)) { %>                
-        
-        <% if(medico) { %>      
-            <div class="details">
-                <div class="recentCases">
-                    <div class="cardHeader">
-                        <h2>Filter by</h2>
-                    </div>
-                    <!--  <%- include('../charts') %>   -->
-                    
-                </div>
-        <% } else { %>
-            <div class="details-home">
-        <% } %>        
             
-    <% } else { %>
-        <div class="details">
-            <%- include('../layouts/intern/casesInfo') %>    
-    <% } %>        
+        <% if( (idButton == 0)) { %>                
             
-            <div class="recentPatients">
-                <div class="cardHeader">
-                    <h2>Pacientes</h2>
-                </div>
+            <% if(medico) { %>      
+                <div class="details">
+                    <div class="recentCases">
+                        <div class="cardHeader">
+                            <h2>Filter by</h2>
+                        </div>
+                        <!--  <%- include('../charts') %>   -->
+                        
+                    </div>
+            <% } else { %>
+                <div class="details-home">
+            <% } %>        
                 
-                <table>
-                    <thead>
-                        <tr>
-                            <td>ID case</td>
-                            <td>Full Name</td>
-                            <td>Patient status</td>
-                            <td>Address home</td>
-                            <td>Covid State</td>
-                            <td>Last state date (mm/dd/yyyy)</td>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody">
-                        <% for(var i=0; i<links.length; i++) {%>
-
+        <% } else { %>
+            <div class="details">
+                <%- include('../layouts/intern/casesInfo') %>    
+        <% } %>        
+                
+                <div class="recentPatients">
+                    <div class="cardHeader">
+                        <h2>Pacientes</h2>
+                    </div>
+                    
+                    <table>
+                        <thead>
                             <tr>
-                                <td>
-                                    <%= links[i].idcase %>
-                                </td>
-                                <td>
-                                    <%= links[i].name %>
-                                        <%= links[i].lastname %>
-                                </td>
-                                <td>
-                                    <button class="patientState"  style="background: <%=links[i].color%>;">
-                                        <a href="/links/intern/<%=links[i].idcase%>" class="patientState"><%=links[i].state%> </a>
-                                    </button>
-                                </td>
-                                <td>
-                                    <%= links[i].addresshome %>
-                                </td>
-                                <td>
-                                    <%= links[i].covidresult %>
-                                </td> 
-                                <td>
-                                    <%=new Date(links[i].datestate).getMonth()%>/<%=new Date(links[i].datestate).getDate()%>/<%=new Date(links[i].datestate).getFullYear()%>
-                                </td>
+                                <td>ID case</td>
+                                <td>Full Name</td>
+                                <td>Patient status</td>
+                                <td>Address home</td>
+                                <td>Covid State</td>
+                                <td>Last state date (mm/dd/yyyy)</td>
                             </tr>
-                        <% } %>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                        </thead>
+                        <tbody id="tbody">
+                            <% for(var i=0; i<links.length; i++) {%>
 
+                                <tr>
+                                    <td>
+                                        <%= links[i].idcase %>
+                                    </td>
+                                    <td>
+                                        <%= links[i].name %>
+                                            <%= links[i].lastname %>
+                                    </td>
+                                    <td>
+                                        <button class="patientState"  style="background: <%=links[i].color%>;">
+                                            <a href="/links/intern/<%=links[i].idcase%>" class="patientState"><%=links[i].state%> </a>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <%= links[i].addresshome %>
+                                    </td>
+                                    <td>
+                                        <%= links[i].covidresult %>
+                                    </td> 
+                                    <td>
+                                        <%=new Date(links[i].datestate).getMonth()%>/<%=new Date(links[i].datestate).getDate()%>/<%=new Date(links[i].datestate).getFullYear()%>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
     </div>
     
-    <script>
-        
-    </script>
+
 
 
 </body>
