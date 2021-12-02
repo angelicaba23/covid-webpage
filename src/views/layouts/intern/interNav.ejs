@@ -53,31 +53,36 @@
 
 <div class="main">
     <div class="topbar">
-        <div class="toggle" onclick="toggleMenu();"></div>
-        <div class="search" id="search">
-            <div>
-                <h4>ID CASE</h4>
-                <input id="filterIDcase" type="text" class="form-control" 
-                name="filterIDcase" placeholder="ID case" autofocus />
+        <div class="toggle" title="Menu" onclick="toggleMenu();"></div>
+        <% if(url=="/intern/mapIntern") { %>
+            
+        <% }else { %>
+            <div class="search" id="search">
+                <div>
+                    <h4>ID CASE</h4>
+                    <input id="filterIDcase" type="text" class="form-control" 
+                    name="filterIDcase" placeholder="ID case" autofocus />
+                </div>
+                <div>
+                    <h4>NAME</h4>
+                    <input id="filterName" type="text" class="form-control" 
+                    name="filterName" placeholder="name" autofocus />
+                </div>
+                <div>
+                    <h4>ID PATIENT</h4>
+                    <input id="filterID" type="text" class="form-control" 
+                    name="filterID" placeholder="ID patient" autofocus />
+                </div>
             </div>
-            <div>
-                <h4>NAME</h4>
-                <input id="filterName" type="text" class="form-control" 
-                name="filterName" placeholder="name" autofocus />
-            </div>
-            <div>
-                <h4>ID PATIENT</h4>
-                <input id="filterID" type="text" class="form-control" 
-                name="filterID" placeholder="ID patient" autofocus />
-            </div>
-        </div>
+        <% } %>
+        
         <% if(!medico){ %> 
             <div class="user">
-                <img src="/images/assistant.png" alt="user" onclick="toggleMenu();">
+                <img src="/images/assistant.png" title="Assistant" alt="user" onclick="toggleMenu();">
             </div>
         <% }  else {%>
             <div class="user">
-                <img src="/images/doctor.png" alt="user" onclick="toggleMenu();">
+                <img src="/images/doctor.png" title="Medic" alt="user" onclick="toggleMenu();">
             </div>
         <% }%>
     </div>

@@ -37,6 +37,7 @@ router.get("/intern", async (req, res) => {
   nameee = ''
   idd = ''
   if (req.session.inern) {  
+    const url = req.url;
     const links = await pullDB(nameee, iidcase, idd);
     id = 0;
     numPos = 0
@@ -50,7 +51,8 @@ router.get("/intern", async (req, res) => {
     });
     res.render("links/intern", {
       links: links, title: "Dashboard",
-      idButton: id, edit: false, numPos: numPos, numNeg: numNeg,  medico: req.session.medic
+      idButton: id, edit: false, numPos: numPos, numNeg: numNeg,
+      medico: req.session.medic, url: url
     });
   } else {
     res.redirect("/signin");
@@ -81,15 +83,21 @@ router.get('/intern/patientRegister', async (req, res) => {
 });
 router.get('/intern/mapIntern', async (req, res) => {
   if (req.session.inern) {
-    console.log("")
-    console.log("GOOGLE MAP")
-    console.log("")
-    const url = req.url;
-    var id = url.toString().split("/");
-    id = id[2];
-    res.render("links/mapIntern", {
-      title: 'Map' + id, idButton: id, medico: req.session.medic, url: url
+    if(req.session.medic){
+      const url = req.url;
+      console.log("")
+      console.log(url)
+      console.log("")
+      var id = url.toString().split("/");
+      id = id[2];
+      res.render("links/mapIntern", {
+      title: 'Map' + id, idButton: id, medico: req.session.medic, 
+      url: url
     });
+    }else{
+      res.redirect("/links/intern")
+    }
+    
   } else {
     res.redirect("/signin");
   }
