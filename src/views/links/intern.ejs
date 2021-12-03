@@ -23,7 +23,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/javascripts/map.js" crossorigin="anonymous"></script>
     <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgTWxq_F18bdRVDFU&libraries=visualization&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgTWxwYETPf4_VDFU&libraries=visualization&callback=initMap">
     </script>
     
 </head>
@@ -121,7 +121,7 @@
                                         <%= links[i].cc %>
                                     </td>
                                     <td>
-                                        <button class="patientState"  style="background: <%=links[i].color%>;">
+                                        <button class="patientState <%=links[i].color%>" >
                                             <a href="/links/intern/<%=links[i].idcase%>" class="patientState"><%=links[i].state%> </a>
                                         </button>
                                     </td>

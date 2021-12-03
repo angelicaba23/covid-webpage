@@ -108,6 +108,21 @@
   transition: 0.5s;
   display: block;
 }
+.yellow{
+  background-color: #D9D92D;
+}
+.red{
+  background-color: #FF0000;
+}
+.pink{
+  background-color: pink;
+}
+.orange{
+  background-color: #FFAD47;
+}
+.green{
+  background-color: #4DE14D;
+}
 @media (max-width: 992px) {
   .cardBox {
     grid-template-columns: repeat(1, 1fr);
