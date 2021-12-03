@@ -30,7 +30,7 @@ async function filterPatients(idcase, name, id) {
                             "<td>"+patient.name+" "+patient.lastname+"</td>"+
                             "<td>"+patient.cc+"</td>"+
                             "<td>"+
-                            '<button class="patientState" style="background:'+patient.color+'";>'+
+                            '<button class="patientState '+patient.color+'" >'+
                             '<a href="/links/intern/'+patient.idcase+'"class="patientState">'+patient.state+'</a>'+
                             "</button>"+
                             "</td>"+

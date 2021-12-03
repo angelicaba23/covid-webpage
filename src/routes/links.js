@@ -221,7 +221,7 @@ router.post('/register', async (req, res) => {
   }
   const url = req.url;
   var id = url.toString().split("/"); id = id[2];
-  res.redirect("/links/intern/" + id);
+  res.redirect("/links/intern/patientRegister");
 });
 router.post('/filter', async (req, res) => {
   if (req.session.inern) {

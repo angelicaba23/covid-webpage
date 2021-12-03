@@ -33,8 +33,6 @@ app.use(require("./routes"));
 app.use("/admin", require("./routes/authentication"));
 app.use("/links", require("./routes/links"));
 
-
-
 //Public
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "lib")));

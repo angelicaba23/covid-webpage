@@ -11,50 +11,51 @@ async function initMap() {
 }
 
 async function getAddress(idcase = '', name = '', id = '') {
-    const data = [idcase,name,id];
-    console.log(data);
+  const data = [idcase, name, id];
+  console.log(data);
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    }
-    const response = await fetch('/links/filter', options);
-    console.log(response);
-    const dates = await response.json();
-    console.log(dates);
-    addresshome = [];
-    colorhome = [];
-    dates.forEach(patient => {
-      addresshome.push(patient.addresshome);
-      colorhome.push(patient.color);
-    });
-    
-    addresstoCoords(addresshome, colorhome)
-    //setMarkers(coords)
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }
+  const response = await fetch('/links/filter', options);
+  console.log(response);
+  const dates = await response.json();
+  console.log(dates);
+  addresshome = [];
+  colorhome = [];
+  dates.forEach(patient => {
+    addresshome.push(patient.addresshome);
+    colorhome.push(patient.color);
+  });
+
+  addresstoCoords(addresshome, colorhome)
+  //setMarkers(coords)
 }
 
 const addresstoCoords = (address, color) => {
   console.log("addresstoCo")
   console.log(address);
   let coords = []
-  
-  address.forEach(function (info,s) {
-  console.log(s, info)
-  axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
-    params: {
-      address: info +' Barranquilla',
-      key: 'AIzaSyDgTWxwY8bdRVDFU'}
-  })
-  .then(function (response) {
-    coords = [response.data.results[0].geometry.location.lat,response.data.results[0].geometry.location.lng, color[s], s, info]
-    addMarkers(coords);
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
+
+  address.forEach(function (info, s) {
+    console.log(s, info)
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+      params: {
+        address: info + ' Barranquilla',
+        key: 'AIzaSyDgTWxwY8bdRVDFU'
+      }
+    })
+      .then(function (response) {
+        coords = [response.data.results[0].geometry.location.lat, response.data.results[0].geometry.location.lng, color[s], s, info]
+        addMarkers(coords);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   });
 }
 

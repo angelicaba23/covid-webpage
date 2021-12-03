@@ -1,43 +1,24 @@
-.allCharts {
-  position: relative;
-  margin: 50px;
-  width: auto;
-  padding: 20px;
-  padding-top: 80px;
-  display: grid;
-  grid-gap: 20px;
+.allStadistics {
+  margin: 0 15vw;
+  left: 50%;
 }
-.myChart {
-  width: 500px;
+.allCharts {
+  margin: 50px;
 }
 .cardBox {
   position: relative;
-  width: 100%;
+  align-items: center;
+  text-align: center;
   padding: 20px;
-  padding-top: 80px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  margin: 0 10vw;
 }
-
-#myPie1 {
-  width: 300px;
-}
-.card {
-  position: relative;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
+.diagramsContainer {
+  align-items: center;
+  width: 50vw;
+  padding: 5vh 0;
 }
 .numbers {
   position: relative;
   font-size: 2em;
   font-weight: 500;
-}
-.cardBox .card .cardName {
-  color: #999;
-}
-.cardBox .card .iconBox {
-  font-size: 2.5em;
-  color: #03a9f4;
 }
