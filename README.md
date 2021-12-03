@@ -1,4 +1,4 @@
-# SMS LOCATION
+# COVID STATS WEBPAGE
  A web app to manage covid cases with many features like registering a patient, changing patient's state.
  
 ## ✅ Links
