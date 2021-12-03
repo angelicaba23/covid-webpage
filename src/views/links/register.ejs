@@ -118,7 +118,8 @@
                         <tr>
                             <td>ID case</td>
                             <td>Full Name</td>
-                            <td>Patient status</td>
+                            <td>Patient's id</td>
+                            <td>Patient's status</td>
                             <td>Address home</td>
                             <td>Covid State</td>
                             <td>Last state date</td>
@@ -134,6 +135,9 @@
                                 <td>
                                     <%= links[i].name %>
                                         <%= links[i].lastname %>
+                                </td>
+                                <td>
+                                    <%= links[i].cc %>
                                 </td>
                                 <td>
                                     <button class="patientState"  style="background: <%=links[i].color%>;">

@@ -2,23 +2,43 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../accesDB");
 async function pullDB(nameee, iidcase, idd) {
-  const pullDB2 = (await pool.query(
-    `WITH ONEQUERY AS (
-      SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
-      FROM covid.statepatient as s
-      GROUP BY idcase
+  if (iidcase == '') {
+    var pullDB2 = (await pool.query(
+      `WITH ONEQUERY AS (
+        SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
+        FROM covid.statepatient as s
+        GROUP BY idcase
+        )
+        SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, g.gender as gen, s.datestate, st.color
+        FROM covid.statepatient as s
+        INNER JOIN ONEQUERY AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
+        INNER JOIN covid.cases AS c ON s.idcase = c.idcase
+        INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
+        INNER JOIN covid.states AS st ON st.idstate = s.state
+        INNER JOIN covid.gender AS g ON c.gender = g.idgender
+        WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"
+        ORDER BY c.idcase ASC`
       )
-      SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, g.gender as gen, s.datestate, st.color
-      FROM covid.statepatient as s
-      INNER JOIN ONEQUERY AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
-      INNER JOIN covid.cases AS c ON s.idcase = c.idcase
-      INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
-      INNER JOIN covid.states AS st ON st.idstate = s.state
-      INNER JOIN covid.gender AS g ON c.gender = g.idgender
-      WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase LIKE "${iidcase}%"
-      ORDER BY c.idcase ASC`
-  )
-  )
+    )
+  } else {
+    var pullDB2 = (await pool.query(
+      `WITH ONEQUERY AS (
+        SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
+        FROM covid.statepatient as s
+        GROUP BY idcase
+        )
+        SELECT c.*, cs.state as covidresult, s.state as numstate, st.state, g.gender as gen, s.datestate, st.color
+        FROM covid.statepatient as s
+        INNER JOIN ONEQUERY AS q ON s.idcase = q.idcase AND s.idstatepatient = laststate
+        INNER JOIN covid.cases AS c ON s.idcase = c.idcase
+        INNER JOIN covid.covidstate AS cs ON cs.idcovidstate = c.resultcovid
+        INNER JOIN covid.states AS st ON st.idstate = s.state
+        INNER JOIN covid.gender AS g ON c.gender = g.idgender
+        WHERE c.name LIKE "${nameee}%"AND c.cc LIKE "${idd}%" AND c.idcase = "${iidcase}%"
+        ORDER BY c.idcase ASC`
+      )
+    )
+  }
   return pullDB2
 }
 async function pull2DB(idcase) {

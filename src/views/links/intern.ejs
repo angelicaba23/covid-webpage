@@ -20,9 +20,10 @@
     <script src="/javascripts/intern.js" crossorigin="anonymous"></script>
     <script defer src="/javascripts/assistant.js" ></script>
     <script defer src="/javascripts/formatDate.js" ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/javascripts/map.js" crossorigin="anonymous"></script>
     <script async
-        src="https://maps.googleapis.com/maps/api/js?key=zaSyDgTWxwYETPf4_3aTpbxrJq_F18bdRVDFU&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgTWxwYET8bdRVDFU&callback=initMap">
     </script>
 </head>
 
@@ -97,7 +98,8 @@
                             <tr>
                                 <td>ID case</td>
                                 <td>Full Name</td>
-                                <td>Patient status</td>
+                                <td>Patient's id</td>
+                                <td>Patient's status</td>
                                 <td>Address home</td>
                                 <td>Covid State</td>
                                 <td>Last state date (mm/dd/yyyy)</td>
@@ -113,6 +115,9 @@
                                     <td>
                                         <%= links[i].name %>
                                             <%= links[i].lastname %>
+                                    </td>
+                                    <td>
+                                        <%= links[i].cc %>
                                     </td>
                                     <td>
                                         <button class="patientState"  style="background: <%=links[i].color%>;">
