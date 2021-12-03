@@ -6,7 +6,8 @@
 - [Repo](https://github.com/angelicaba23/covid-webpage "COVID WEB Repo")
 
 ## 📱Screenshots
-<img src="/screenshots/1.png " height="400" title="Home Page"> <img src="/screenshots/2.png " height="400" title="Second Page">
+<img src="/screenshots/1.png " title="Home Page"> <img src="/screenshots/2.png " title="login Page"> 
+<img src="/screenshots/3.png " title=" Page"> <img src="/screenshots/2.png " title="Medic Page">
  
 
 
