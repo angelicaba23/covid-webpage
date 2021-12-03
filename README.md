@@ -7,7 +7,7 @@
 
 ## 📱Screenshots
 <img src="/screenshots/1.png " title="Home Page"> <img src="/screenshots/2.png " title="login Page"> 
-<img src="/screenshots/3.png " title=" Page"> <img src="/screenshots/2.png " title="Medic Page">
+<img src="/screenshots/3.png " title="assistant Page"> <img src="/screenshots/4.png " title="Medic Page">
  
 
 
