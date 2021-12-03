@@ -23,7 +23,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/javascripts/map.js" crossorigin="anonymous"></script>
     <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgTWxwYETPf4_VDFU&libraries=visualization&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD18bdRVDFU&libraries=visualization&callback=initMap">
     </script>
     
 </head>
@@ -73,16 +73,9 @@
             <% } %>
 
             
-        <% if( (idButton == 0)) { %>                
-            
-            <% if(medico) { %>      
-                <div class="details">
-                    <div class="recentCases">
-                        <div id="map"></div>                        
-                    </div>
-            <% } else { %>
-                <div class="details-home">
-            <% } %>        
+        <% if( (idButton == 0)) { %>   
+                    
+            <div class="details-home">
                 
         <% } else { %>
             <div class="details">
@@ -121,7 +114,7 @@
                                         <%= links[i].cc %>
                                     </td>
                                     <td>
-                                        <button class="patientState <%=links[i].color%>" >
+                                        <button class="patientState <%=links[i].color%>">
                                             <a href="/links/intern/<%=links[i].idcase%>" class="patientState"><%=links[i].state%> </a>
                                         </button>
                                     </td>
@@ -143,7 +136,6 @@
 
         </div>
     </div>   
-
 </body>
 
 </html>

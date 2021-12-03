@@ -46,7 +46,7 @@ const addresstoCoords = (address, color) => {
   axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
     params: {
       address: info +' Barranquilla',
-      key: 'AIzaSyDgTWxwY8bdRVDFU'}
+      key: 'AIzaSyDgTWxwYETPf4_3aTpbxrJq_F18bdRVDFU'}
   })
   .then(function (response) {
     coords = [response.data.results[0].geometry.location.lat,response.data.results[0].geometry.location.lng, color[s], s, info]
@@ -77,6 +77,7 @@ const addMarkers = (coords) => {
   });
   //markers.push(marker);
 }
+
 
 function mapView() {
   let toggle = document.querySelector('.map-container');
