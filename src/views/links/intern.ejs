@@ -24,7 +24,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/javascripts/map.js" crossorigin="anonymous"></script>
     <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD18bdRVDFU&libraries=visualization&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY%>&libraries=visualization&callback=initMap">
     </script>
     
 </head>
@@ -39,7 +39,7 @@
                 <div class="cardBox">
                     <div class="card">
                         <div>
-                            <div class="numbers">  <%= numNeg + numPos %> </div>
+                            <div class="numbers"><%= numNeg + numPos %> </div>
                             <div class="cardName">Total patients</div>
                         </div>
                         <div class="iconBox">

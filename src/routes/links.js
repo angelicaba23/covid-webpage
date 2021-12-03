@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../accesDB");
 var id;
+
 async function pullDB(nameee, iidcase, idd) {
   if (iidcase == '') {
     var pullDB2 = (await pool.query(
@@ -53,6 +54,8 @@ async function pull2DB(idcase) {
   )
   return pull2DB2
 }
+
+
 router.get("/intern", async (req, res) => {
   iidcase = ''
   nameee = ''
@@ -112,8 +115,7 @@ router.get('/intern/mapIntern', async (req, res) => {
       var id = url.toString().split("/");
       id = id[2];
       res.render("links/mapIntern", {
-      title: 'Map' + id, idButton: id, medico: req.session.medic, 
-      url: url
+      title: 'Map' + id, idButton: id, medico: req.session.medic, url: url
     });
     }else{
       res.redirect("/links/intern")

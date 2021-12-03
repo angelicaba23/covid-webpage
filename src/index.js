@@ -3,7 +3,9 @@ const session = require("express-session");
 const morgan = require("morgan");
 const engine = require("ejs-mate");
 var path = require("path");
+const { Console } = require("console");
 require("dotenv").config();
+const API_KEY = process.env.API_KEY;
 
 // initializations
 const app = express();
@@ -54,3 +56,5 @@ app.use(function(req, res, next){
 app.listen(app.get("port"), () => {
   console.log("Server on port", app.get("port"));
 });
+
+module.exports = API_KEY;

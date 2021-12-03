@@ -1,5 +1,2 @@
-src/controller/keys.js
 node_modules/
 .env
-.vscode/launch.json
-.vscode
