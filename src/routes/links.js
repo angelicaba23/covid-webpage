@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../accesDB");
+var id;
 async function pullDB(nameee, iidcase, idd) {
   if (iidcase == '') {
     var pullDB2 = (await pool.query(
@@ -163,6 +164,7 @@ router.get('/intern/:id/edit', async (req, res) => {
 });
 
 
+
 // Desde aqui van post para lo de Register Patients y subir datos a la DB
 router.post('/intern/:id/edit', async (req, res) => {
   if (req.session.inern) {
@@ -237,4 +239,4 @@ router.post('/filter', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports  = router;
