@@ -27,7 +27,7 @@ In the project directory, you can run:
 - NodeJS
 
 ## 🔜 Future Updates
-> Heat map of cases
+> Heat map of covid cases
   
 
 ## 👩‍💻 Authors
