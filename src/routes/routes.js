@@ -20,7 +20,7 @@ const getSymptoms = (req, res, next) => {
 };
 const getLogin = (req, res, next) => {
   console.log(req.url);
-  res.render("login", { title: "Covid-19 Stats Login", url: req.url });
+  res.render("index", { title: "Covid-19 Stats Login", url: req.url });
 };
 const postLogin = async (req, res) => {
   const newLink = req.body;

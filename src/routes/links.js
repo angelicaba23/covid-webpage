@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../accesDB");
-var id;
 
 async function pullDB(nameee, iidcase, idd) {
   if (iidcase == '') {
-    var pullDB2 = (await pool.query(
+    const pullDB2 = (await pool.query(
       `WITH ONEQUERY AS (
         SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
         FROM covid.statepatient as s
@@ -23,7 +22,7 @@ async function pullDB(nameee, iidcase, idd) {
       )
     )
   } else {
-    var pullDB2 = (await pool.query(
+    const pullDB2 = (await pool.query(
       `WITH ONEQUERY AS (
         SELECT  s.idcase, MAX(s.idstatepatient) AS laststate
         FROM covid.statepatient as s
@@ -57,13 +56,12 @@ async function pull2DB(idcase) {
 
 
 router.get("/intern", async (req, res) => {
-  iidcase = ''
-  nameee = ''
-  idd = ''
-  if (req.session.inern) {  
+  const iidcase = ''
+  const nameee = ''
+  const idd = ''
     const url = req.url;
     const links = await pullDB(nameee, iidcase, idd);
-    id = 0;
+    const id = 0;
     numPos = 0
     numNeg = 0
     links.forEach(patient => {
@@ -78,9 +76,6 @@ router.get("/intern", async (req, res) => {
       idButton: id, edit: false, numPos: numPos, numNeg: numNeg,
       medico: req.session.medic, url: url
     });
-  } else {
-    res.redirect("/signin");
-  }
 });
 router.get('/intern/patientRegister', async (req, res) => {
   if (req.session.inern) {
@@ -91,7 +86,7 @@ router.get('/intern/patientRegister', async (req, res) => {
     if (!req.session.medic){
       const links = await pullDB(nameee, iidcase, idd);
       const url = req.url;
-      var id = url.toString().split("/");
+      const id = url.toString().split("/");
       id = id[2];
       res.render("links/register", {
         links: links, title: 'Edit case ' + id,
@@ -112,7 +107,7 @@ router.get('/intern/mapIntern', async (req, res) => {
       console.log("")
       console.log(url)
       console.log("")
-      var id = url.toString().split("/");
+      const id = url.toString().split("/");
       id = id[2];
       res.render("links/mapIntern", {
       title: 'Map' + id, idButton: id, medico: req.session.medic, url: url
@@ -132,7 +127,7 @@ router.get('/intern/:id', async (req, res) => {
     idd = ''
     const links = await pullDB(nameee, iidcase, idd);
     const url = req.url;
-    var id = url.toString().split("/");
+    const id = url.toString().split("/");
     id = id[2];
     const allStates = await pull2DB(id);
     console.log(allStates)
@@ -152,7 +147,7 @@ router.get('/intern/:id/edit', async (req, res) => {
     idd = ''
     const links = await pullDB(nameee, iidcase, idd);
     const url = req.url;
-    var id = url.toString().split("/");
+    const id = url.toString().split("/");
     id = id[2];
     const allStates = await pull2DB(id);
     res.render("links/intern", {
@@ -171,7 +166,7 @@ router.get('/intern/:id/edit', async (req, res) => {
 router.post('/intern/:id/edit', async (req, res) => {
   if (req.session.inern) {
     const url = req.url;
-    var id = url.toString().split("/"); id = id[2];
+    const id = url.toString().split("/"); id = id[2];
     const newState = req.body;
     const res = await pool
       .query(
@@ -188,7 +183,7 @@ router.post('/intern/:id/edit', async (req, res) => {
 router.post('/intern/:id', async (req, res) => {
   if (req.session.inern) {
     const url = req.url;
-    var id = url.toString().split("/"); id = id[2];
+    const id = url.toString().split("/"); id = id[2];
     const newLink = req.body;
     res.redirect("/links/intern/" + id);
 
@@ -222,7 +217,7 @@ router.post('/register', async (req, res) => {
     console.log("not register");
   }
   const url = req.url;
-  var id = url.toString().split("/"); id = id[2];
+  const id = url.toString().split("/"); id = id[2];
   res.redirect("/links/intern/patientRegister");
 });
 router.post('/filter', async (req, res) => {
