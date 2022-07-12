@@ -7,16 +7,20 @@ const { error } = require("npmlog");
 const e = require("express");
 
 const getIndex = (req, res, next) => {
-  res.render("index", { title: "Covid-19 Stats", });
+  console.log(req.url)
+  res.render("index", { title: "Covid-19 Stats", url: req.url});
 };
 const getPrevention = (req, res, next) => {
-  res.render("prevention", { title: "Covid-19 Stats Prevention" });
+  console.log(req.url)
+  res.render("index", { title: "Covid-19 Stats Prevention", url: req.url});
 };
 const getSymptoms = (req, res, next) => {
-  res.render("symptoms", { title: "Covid-19 Stats Symptoms" });
+  console.log(req.url)
+  res.render("index", { title: "Covid-19 Stats Symptoms", url: req.url });
 };
 const getLogin = (req, res, next) => {
-  res.render("login", { title: "Covid-19 Stats Login" });
+  console.log(req.url);
+  res.render("login", { title: "Covid-19 Stats Login", url: req.url });
 };
 const postLogin = async (req, res) => {
   const newLink = req.body;

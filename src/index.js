@@ -2,14 +2,13 @@ const express = require("express");
 const session = require("express-session");
 const morgan = require("morgan");
 const engine = require("ejs-mate");
-var path = require("path");
-const { Console } = require("console");
+const path = require("path");
 require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 
 // initializations
 const app = express();
-require("./accesDB");
+//require("./accesDB");
 
 // settings
 app.use(

@@ -2,7 +2,7 @@
 </head>
 
 <body>
-  <%- include('./layouts/navBar') %>
+  <%- include('./home/navBar') %>
     <div class="hero-v1">
       <div class="container">
         <div class="row">
@@ -16,14 +16,24 @@
           </div>
           <div class="col-lg-6">
             <figure class="ilustration">
-              <img src="/images/protect(2).png" 
-              alt="Image" class=img-fluid>
+              <% if(url === "/") { %>
+                <img src="/images/protect(2).png" alt="Image" class=img-fluid>
+              <% } %>
+              <% if(url === "/symptoms") { %>
+                  <img src="/images/symptoms.png" alt="Image" class=img-fluid>
+              <% } %>
+              <% if(url === "/prevention") { %>
+                <img src="/images/protect(2).png" alt="Image" class=img-fluid>
+              <% } %>
             </figure>
           </div>
         </div>
       </div>
     </div>
-    <%- include('./charts') %>
+  <% if(url === "/") { %>
+    <%- include('./home/charts') %>
+  <% } %>
+
 </body>
 
 </html>

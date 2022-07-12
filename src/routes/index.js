@@ -15,6 +15,7 @@ const {
 router.get('/', getIndex);
 router.get('/prevention', getPrevention);
 router.get('/symptoms', getSymptoms);
+
 router.get('/logout', logout);
 
 router.get('/signin', getLogin);
